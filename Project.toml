@@ -1,0 +1,4 @@
+name = "ControlNotebooks"
+uuid = "458ae76e-2eb1-4157-af9d-1209ae2258a7"
+authors = ["Joe Carpinelli <jdcarpinelli@gmail.com>"]
+version = "0.1.0"
