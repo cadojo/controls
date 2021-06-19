@@ -14,6 +14,7 @@ flight dynamics.
 All code is written with the Julia programming language. Modeling library courtesy of [ModelingToolkit.jl](https://github.com/SciML/ModelingToolkit.jl), and controls library courtesy of [ControlSystems.jl](https://github.com/JuliaControl/ControlSystems.jl).
 
 ## Replication & Usage
+_Pssst! If you you're using `Pluto` version 0.15 and higher, you can skip step 3!_
 
 1. Download and install he current stable [Julia](https://julialang.org/downloads/#current_stable_release) for your computer
 2. Clone this repo: `git clone https://github.com/cadojo/ControlNotebooks.jl`
