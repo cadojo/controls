@@ -88,15 +88,14 @@
 # for simulation.
 
 using ModelingToolkit
-using DifferentialEquations
 
 @parameters t fₑ d k
 @variables x(t)
 δ = Differential(t)
 
 eqs = [
-    δ(δ(x)) + d*δ(x) + k*x ~ fₑ
-] .|> simplify
+    δ(δ(x))~ - d*δ(x) - k*x + fₑ
+]
 
 model = (ode_order_lowering ∘ ODESystem)(eqs, t, [x], [fₑ, d, k]) 
 
@@ -107,15 +106,17 @@ model = (ode_order_lowering ∘ ODESystem)(eqs, t, [x], [fₑ, d, k])
 # starting point) for our state variables. The code below specifies some arbitrary
 # initial conditions and constant parameter values, and simulates the resulting dynamics. 
 
+using Plots
+using DifferentialEquations
+
 problem = let x₀ = 0.1, ẋ₀ = 0.0, dₙ = 0.5, kₙ = 0.9, mₙ = 5.0, fₙ = 10.0, Δt = 10.0
     ODEProblem(
         model,
         [x => x₀],
         (0.0, Δt),
-        [d => dₙ, k => kₙ, m => mₙ, fₑ => fₙ]
+        [d => dₙ, k => kₙ, fₑ => fₙ]
     )
 end
 
 solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
-
 plot(solutions; title = "Spring Mass Damper Simulation")
