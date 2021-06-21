@@ -22,7 +22,7 @@ at jdcarpinelli@gmail.com.
 
 Our world is filled with human-made, and natural systems. We can model each system with _equations of motion_. These equations describe how each system's _state_ changes! A quick definition for _state_ is described below. We often want to __control__ the state in some way. Think about the populations of predators and prey in an ecosystem, inflation rates in an economy, the orientation of a rocket, the speed of a car, etc.
 
-!!! definition
+!!! note "Definitions"
 	__State__ – a set of values that _completely describe_ a system!
 
 Over the years, smart people have developed a field known as __controls__. Control theory is a broad term which includes...
@@ -34,7 +34,7 @@ Over the years, smart people have developed a field known as __controls__. Contr
 
 We'll need a few more definitions before we really get started. 
 
-!!!
+!!! note "Definitions"
     - __Plant__ – the system you'd like to control (a car, a rocket, etc.)
     - __Input__ - parameter values in your equations which you can change to influence your system's state (often a force or a device which produces a force for physical systems)
     - __Model__ - the equations you've been given, or you've chosen which represent your system (_model_ is synonymous with _equations of motion_)
@@ -53,7 +53,9 @@ University researchers ([Chakraborty et al](https://www.sciencedirect.com/scienc
 
 This approximate (read, ROUGH) model for GTM flight dynamics has been ported to Julia as the [`PolynomialGTM`](https://github.com/cadojo/PolynomialGTM.jl) package. `PolynomialGTM` only exports one variable: `GTM`, a `ModelingToolkit.ODESystem` instance which includes the polynomial-approximated equations of motion for NASA's GTM. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_3JSRvaTRIQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```@raw html
+<iframe width="560" src="https://www.youtube.com/embed/_3JSRvaTRIQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
 
 ## What's Next?
 
