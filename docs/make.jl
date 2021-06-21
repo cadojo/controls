@@ -22,5 +22,6 @@ makedocs(
 )
 
 deploydocs(
-    repo = "https://github.com/cadojo/ControlTheoryNotes.jl"
+    repo      = "https://github.com/cadojo/ControlTheoryNotes.jl",
+    devbranch = "main"
 )
