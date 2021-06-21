@@ -90,11 +90,12 @@
 using ModelingToolkit
 
 @parameters t fₑ d k
-@variables x(t)
+@variables x(t) ẋ(t)
 δ = Differential(t)
 
 eqs = [
-    δ(δ(x))~ - d*δ(x) - k*x + fₑ
+    δ(x) ~ ẋ,
+    δ(ẋ)~ - d*ẋ - k*x + fₑ
 ]
 
 model = (ode_order_lowering ∘ ODESystem)(eqs, t, [x], [fₑ, d, k]) 
@@ -109,10 +110,10 @@ model = (ode_order_lowering ∘ ODESystem)(eqs, t, [x], [fₑ, d, k])
 using Plots
 using DifferentialEquations
 
-problem = let x₀ = 0.1, ẋ₀ = 0.0, dₙ = 0.5, kₙ = 0.9, mₙ = 5.0, fₙ = 10.0, Δt = 10.0
+problem = let x₀ = 0.1, ẋ₀ = 0.0, dₙ = 0.5, kₙ = 0.9, mₙ = 5.0, fₙ = 1.0, Δt = 30.0
     ODEProblem(
         model,
-        [x => x₀],
+        [x => x₀, ẋ => ẋ₀],
         (0.0, Δt),
         [d => dₙ, k => kₙ, fₑ => fₙ]
     )
