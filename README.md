@@ -14,4 +14,7 @@ plant (a.k.a. one dynamical system that we want to control): a [polynomial
 approximation](https://github.com/cadojo/PolynomialGTM.jl) for a [NASA subscale model aircraft's](https://ntrs.nasa.gov/api/citations/20040085988/downloads/20040085988.pdf)
 flight dynamics. 
 
-All code is written with the Julia programming language. Modeling library courtesy of [ModelingToolkit.jl](https://github.com/SciML/ModelingToolkit.jl), and controls library courtesy of [ControlSystems.jl](https://github.com/JuliaControl/ControlSystems.jl).
+All code is written with the Julia programming language. Modeling library courtesy of [
+ModelingToolkit.jl](https://github.com/SciML/ModelingToolkit.jl), polynomial aircraft dynamics courtesy of 
+[PolynomialGTM.jl](https://github.com/cadojo/PolynomialGTM.jl), and controls library courtesy of 
+[ControlSystems.jl](https://github.com/JuliaControl/ControlSystems.jl).

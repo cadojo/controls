@@ -133,14 +133,13 @@ plot(solutions; title = "Spring Mass Damper Simulation")
 Okay, we just showed some applied modeling and simulation for spring-mass-damper dynamics.
 What about the primary system we're analyzing throughout these notes, NASA's Generic Transport
 Model (GTM)? The polynomial-approximated equations we'll be using are super long. Still want to
-see them? It's your funeral! Special thanks to Michael Livecchi, a good friend who
+see them? It's your funeral! Special thank you to Michael Livecchi, a dear friend who
 read these equations out over the phone to make sure they were typed correctly!
 
-@raw julia
-```
+```@example Chapter 1: Dynamics
 using Latexify
 using PolynomialGTM
-print(latexify.(equations(GTM)))
+latexify.(equations(GTM))
 ```
 
 ---

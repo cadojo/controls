@@ -129,8 +129,4 @@ plot(solutions; title = "Spring Mass Damper Simulation")
 
 using Latexify
 using PolynomialGTM
-
-@raw julia
-```
-print(latexify.(equations(GTM)))
-```
+latexify.(equations(GTM))
