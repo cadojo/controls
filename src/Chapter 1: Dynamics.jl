@@ -11,7 +11,7 @@
 # This is really important. We are __always__ approximating our system by describing it with a model.
 # The question we need to ask is "is our approximate description of our system (our model) good enough?"
 
-# !!! tip "Definitions"
+# !!! note "Definitions"
 #     - __Model__ - a mathematical description of a system
 
 # But what does this model _look like_? To answer this question, let's 
@@ -31,13 +31,91 @@
 # means defining the _equations of motion_ for our system. A set of _equations of motion_
 # which describe our _dynamical_ system __is__ our model. 
 
-## Model Example
+# ## Model Example
 # A really common system in engineering is known as the __spring-mass-damper__. 
 # We can roughly describe this system as a block on a table, which 
 # is connected to a spring. We can _force_ (a.k.a. _affect_) this system by pulling on 
 # the block to extend or compress the spring. 
 #
+# ### Model Construction
 # Let's figure out our equations of motion. The following question is usually a useful 
-# starting point: "what are the forces on our system?"
+# starting point: "what are the forces on our system?" We know we'll have one external 
+# force: us pulling or pushing on the block! Let's call this external force $f_e$. 
+# We'll also have a force due to the spring, and a force due to the friction 
+# between the block and the table. The force due to the spring will be _proportional_
+# to the position of the block with respect to the spring's neutral position: let's 
+# call the spring constant $k$. The force due to friction will be proportional 
+# to the _velocity_ of the block (let's forget about static friction for now):
+# let's call the coefficient of friction $d$.
 # 
+# With all of the forces identified, we can start constructing the _eqautions of motion_
+# for this system. If we call our block's position $x$, then the acceleration $\ddot{x}$
+# will be equal to the sum of our external force $f_e$, the spring force $k x$, and the
+# force due to friction $d \dot{x}$. Summing these forces produces the following (common)
+# spring-mass-damper equation, where $m$ is the mass of the block. 
+#
+# $\begin{equation} f_e = m \ddot{x} + d \dot{x} + k x \end{equation}$
 # 
+# We have our model! This is a second-order differential equation. It helps to divide 
+# all variables into two groups: parameters, and states. States describe the system 
+# at some point in time. In this case, state variables answer the following questions:
+# "where is the block, what is the velocity of the block, and what is the acceleration
+# of the block?" One set of valid state variables for this system is $x$ and $\dot{x}$; 
+# we don't need to include $\ddot{x}$ in our list of state variables because we can 
+# calculate $\ddot{x}$ from $x$ and $\dot{x}$. 
+#
+# !!! note 
+#   We say "one set of state variables" because there may (and nearly always are)
+#   other valid state representations that could completely describe this system!
+#   State variables are __not__ unique.
+#
+# If we leave states as symbolic, and then look to the equation(s)
+# of motion of a system, the _parameters_ describe a specific _instance_ of a system.
+# Put another way, no matter what values $f_e$, $d$, and $k$ take, this equation of motion
+# is identifiable as a spring-mass-damper. For this reason, we can specify $f_e$, $d$, and $k$
+# as parameters. We can assume a unit mass for the block for now.
+#
+# !!! note 
+#   The parameter $f_e$ is our _control_ parameter in this example, because we can change $f_e$
+#   to affect our system. For now, let's not differentiate between control parameters and 
+#   non-control parameters. 
+#
+# ### Coding our Model
+# We can simulate these dynamics with Julia's `DifferentialEquations` package. If you're 
+# familiar with MATLAB, `DifferentialEquations` provides numerical integration solvers 
+# that are similar to MATLAB's `ode45` (and similar) solvers. We can use the `ModelingToolkit`
+# package to conveniently put our model to code, and interface with `DifferentialEquations`
+# for simulation.
+
+using ModelingToolkit
+using DifferentialEquations
+
+@parameters t fₑ d k
+@variables x(t)
+δ = Differential(t)
+
+eqs = [
+    δ(δ(x)) + d*δ(x) + k*x ~ fₑ
+] .|> simplify
+
+model = (ode_order_lowering ∘ ODESystem)(eqs, t, [x], [fₑ, d, k]) 
+
+# ### Simulating our Model
+# With `model` defined above, we can use `DifferentialEquations`
+# to simulate our system. Of course, to do this we'll need to specify
+# numerical values for our parameters, and initial conditions (the simulation
+# starting point) for our state variables. The code below specifies some arbitrary
+# initial conditions and constant parameter values, and simulates the resulting dynamics. 
+
+problem = let x₀ = 0.1, ẋ₀ = 0.0, dₙ = 0.5, kₙ = 0.9, mₙ = 5.0, fₙ = 10.0, Δt = 10.0
+    ODEProblem(
+        model,
+        [x => x₀],
+        (0.0, Δt),
+        [d => dₙ, k => kₙ, m => mₙ, fₑ => fₙ]
+    )
+end
+
+solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
+
+plot(solutions; title = "Spring Mass Damper Simulation")
