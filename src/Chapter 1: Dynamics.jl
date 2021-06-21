@@ -98,7 +98,7 @@ eqs = [
     δ(ẋ)~ - d*ẋ - k*x + fₑ
 ]
 
-model = (ode_order_lowering ∘ ODESystem)(eqs, t, [x], [fₑ, d, k]) 
+model = ODESystem(eqs, t, [x], [fₑ, d, k]) 
 
 # ### Simulating our Model
 # With `model` defined above, we can use `DifferentialEquations`
