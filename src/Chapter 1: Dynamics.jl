@@ -65,9 +65,7 @@
 # calculate $\ddot{x}$ from $x$ and $\dot{x}$. 
 #
 # !!! note 
-#   We say "one set of state variables" because there may (and nearly always are)
-#   other valid state representations that could completely describe this system!
-#   State variables are __not__ unique.
+#     We say "one set of state variables" because there may (and nearly always are) other valid state representations that could completely describe this system! State variables are __not__ unique.
 #
 # If we leave states as symbolic, and then look to the equation(s)
 # of motion of a system, the _parameters_ describe a specific _instance_ of a system.
@@ -76,9 +74,9 @@
 # as parameters. We can assume a unit mass for the block for now.
 #
 # !!! note 
-#   The parameter $f_e$ is our _control_ parameter in this example, because we can change $f_e$
-#   to affect our system. For now, let's not differentiate between control parameters and 
-#   non-control parameters. 
+#     The parameter $f_e$ is our _control_ parameter in this example, because we can change $f_e$
+#     to affect our system. For now, let's not differentiate between control parameters and 
+#     non-control parameters. 
 #
 # ### Coding our Model
 # We can simulate these dynamics with Julia's `DifferentialEquations` package. If you're 
@@ -110,7 +108,7 @@ model = ODESystem(eqs, t, [x, ẋ], [fₑ, d, k])
 using Plots
 using DifferentialEquations
 
-problem = let x₀ = 0.1, ẋ₀ = 0.0, dₙ = 0.5, kₙ = 0.9, mₙ = 5.0, fₙ = 1.0, Δt = 30.0
+problem = let x₀ = 0.1, ẋ₀ = 0.0, dₙ = 0.5, kₙ = 0.9, fₙ = 1.0, Δt = 30.0
     ODEProblem(
         model,
         [x => x₀, ẋ => ẋ₀],
