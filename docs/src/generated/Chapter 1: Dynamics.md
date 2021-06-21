@@ -1,3 +1,7 @@
+```@meta
+EditURL = "<unknown>/src/Chapter 1: Dynamics.jl"
+```
+
 # Dynamics and Equations of Motion
 _How stuff moves!_
 

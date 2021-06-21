@@ -1,7 +1,5 @@
 using Documenter
-using Literate 
-using PolynomialGTM
-using Plots
+using Literate
 
 for file ∈ ["Chapter 1: Dynamics.jl"]
     Literate.markdown(
@@ -15,7 +13,8 @@ makedocs(
     format = Documenter.HTML(),
     authors = "Joe Carpinelli",
     pages = [
-        "Home" => "index.md"
+        "Introduction" => "index.md",
+        "Chapter 1: Dynamics" => joinpath("generated", "Chapter 1: Dynamics.md")
     ]
 )
 
