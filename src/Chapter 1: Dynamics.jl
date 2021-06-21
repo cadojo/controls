@@ -98,7 +98,7 @@ eqs = [
     δ(ẋ)~ - d*ẋ - k*x + fₑ
 ]
 
-model = ODESystem(eqs, t, [x], [fₑ, d, k]) 
+model = ODESystem(eqs, t, [x, ẋ], [fₑ, d, k]) 
 
 # ### Simulating our Model
 # With `model` defined above, we can use `DifferentialEquations`
@@ -121,3 +121,18 @@ end
 
 solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
 plot(solutions; title = "Spring Mass Damper Simulation")
+
+## What about GTM Dynamics?
+# Okay, we just showed some applied modeling and simulation for spring-mass-damper dynamics.
+# What about the primary system we're analyzing throughout these notes, NASA's Generic Transport
+# Model (GTM)? The polynomial-approximated equations we'll be using are super long. Still want to 
+# see them? It's your funeral! Special thank you to Michael Livecchi, a dear friend who 
+# read these equations out over the phone to make sure they were typed correctly!
+
+using Latexify
+using PolynomialGTM
+
+@raw julia
+```
+print(latexify.(equations(GTM)))
+```
