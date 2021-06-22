@@ -34,12 +34,15 @@ $\begin{equation}
     u = \begin{bmatrix} \delta_{elev} \\ \delta_{th} \end{bmatrix}
 \end{equation}$
 
-$f(x) \triangleq \dot{x} = \begin{equation}\begin{align*}     
-    \dot{V} &= \frac{1}{m}\left(-D - m g \sin{(\theta - \alpha)} + T_x \cos{\alpha} + T_z \sin{\alpha} \right) \\
-    \dot{\alpha} &= \frac{1}{m V}\left(-L + m g \cos{(\theta - \alpha)} - T_x \sin{\alpha} + T_z \cos{\alpha}\right) + q \\
-    \dot{q} &= \frac{M + T_m}{Iyy} \\
-    \dot{\theta} &= q 
-\end{align*}\end{equation}$
+$\begin{equation}
+f(x) \triangleq \dot{x} = \begin{bmatrix}
+    \dot{V} \\ \dot{\alpha} \\ \dot{q} \\ \dot{\theta}
+\end{bmatrix} = \begin{bmatrix}
+    \frac{1}{m}\left(-D - m g \sin{(\theta - \alpha)} + T_x \cos{\alpha} + T_z \sin{\alpha} \right) \\
+    \frac{1}{m V}\left(-L + m g \cos{(\theta - \alpha)} - T_x \sin{\alpha} + T_z \cos{\alpha}\right) + q \\
+    \frac{M + T_m}{Iyy} \\
+    q
+\end{bmatrix}\end{equation}$ 
 =#
 
 # ## Approximated GTM Dynamics
@@ -63,14 +66,13 @@ $f(x) \triangleq \dot{x} = \begin{equation}\begin{align*}
 # approximations, read [Chakraborty et al's paper](https://www.sciencedirect.com/science/article/abs/pii/S0967066110002595),
 # and check out a [Python implementation and associated paper](https://github.com/cadojo/Replicated-ROA-Analysis) 
 # which was completed as part of a University of Maryland aerospace engineering course project. 
-#
+# The polynomial approximations, as derived and published by Chakraborty et al, are shown below. 
+# I told you to be afraid!
+
 # !!! note 
 #     These polynomial approximations were __also__ implemented with Julia as part of the 
 #     [`PolynomialGTM.jl`](https://github.com/cadojo/PolynomialGTM.jl) package!
 #
-# The polynomial approximations, as derived and published by Chakraborty et al, are shown below. 
-# I told you to be afraid!
-
 # __Special thanks to Michael Livecchi, a good (and _patient_) friend who read 
 # all of these equations out over the phone to make sure they were typed correctly!__
 
