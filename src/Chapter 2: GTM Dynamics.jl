@@ -34,12 +34,12 @@ $\begin{equation}
     u = \begin{bmatrix} \delta_{elev} \\ \delta_{th} \end{bmatrix}
 \end{equation}$
 
-$\begin{align*}     
-    \dot{V} &= \frac{1}{m}\left(-D - m g \sin{(\theta - \alpha)} + T_x \cos{\alpha} + T_z \sin{\alpha} \right) \tag{} \\
-    \dot{\alpha} &= \frac{1}{m V}\left(-L + m g \cos{(\theta - \alpha)} - T_x \sin{\alpha} + T_z \cos{\alpha}\right) + q \tag{} \\
-    \dot{q} &= \frac{M + T_m}{Iyy} \tag{} \\
-    \dot{\theta} &= q \tag{}
-\end{align*}$
+$ f(x) \triangleq \dot{x} = \begin{equation}\begin{align}     
+    \dot{V} &= \frac{1}{m}\left(-D - m g \sin{(\theta - \alpha)} + T_x \cos{\alpha} + T_z \sin{\alpha} \right) \\
+    \dot{\alpha} &= \frac{1}{m V}\left(-L + m g \cos{(\theta - \alpha)} - T_x \sin{\alpha} + T_z \cos{\alpha}\right) + q \\
+    \dot{q} &= \frac{M + T_m}{Iyy} \\
+    \dot{\theta} &= q 
+\end{align}\end{equation}$
 =#
 
 # !!! note
@@ -51,7 +51,7 @@ $\begin{align*}
 #=
 $\begin{equation}
 \begin{align*}
-f_1(x,u) = &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
+f_1(x,u) \approx &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
 &+ 3.705\times10^{-5}x_1^3x_2 x_3 
 - 2.184\times10^{-6}x_1^3x_3^2 \\
 &+ 2.203\times10^{-2}x_1^2x_2^3 - 2.836\times10^{-6}x_2^3u_2^2 \\
@@ -77,7 +77,7 @@ f_1(x,u) = &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
 
 $\begin{equation}
 \begin{align*}
-f_2(x,u) = & -3.709\times10^{-11}x_1^5x_3^2 + 6.869\times10^{-11}x_1x_2^3u_2^3 \\
+f_2(x,u) \approx & -3.709\times10^{-11}x_1^5x_3^2 + 6.869\times10^{-11}x_1x_2^3u_2^3 \\
 &+ 7.957\times10^{-10}x_1^4x_2 x_3 
 + 9.860\times10^{-9}x_1^4x_3^2 \\
 &+ 1.694\times10^{-5}x_1^3x_2^3 - 4.015\times10^{-8}x_1x_2^3u_2^2 \\
@@ -118,7 +118,7 @@ f_2(x,u) = & -3.709\times10^{-11}x_1^5x_3^2 + 6.869\times10^{-11}x_1x_2^3u_2^3 \
 
 $\begin{equation}
 \begin{align*}
-f_3(x,u) = & - 6.573\times10^{-9}x_1^5x_3^3 + 1.747\times10^{-6}x_1^4x_3^3 \\
+f_3(x,u) \approx & - 6.573\times10^{-9}x_1^5x_3^3 + 1.747\times10^{-6}x_1^4x_3^3 \\
 &- 1.548\times10^{-4}x_1^3x_3^3 - 3.569\times10^{-3}x_1^2x_2^3 \\
 &+ 4.571\times10^{-3}x_1^2x_3^3 + 4.953\times10^{-5}x_1^3x_3 \\
 & + 9.596\times10^{-3}x_1^2x_2^2 + 2.049\times10^{-2}x_1^2x_2u_1 \\
@@ -130,7 +130,7 @@ f_3(x,u) = & - 6.573\times10^{-9}x_1^5x_3^3 + 1.747\times10^{-6}x_1^4x_3^3 \\
 \end{equation}$
 
 $\begin{equation}
-f_4(x,u) = x_3 
+f_4(x,u) \approx x_3 
 \end{equation}$
 
 =#

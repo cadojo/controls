@@ -11,13 +11,6 @@ multi-input multi-output linear analysis, and everything in between. These notes
 If you have any questions, suggestions, or corrections, always feel free to email the author (Joe Carpinelli)
 at jdcarpinelli@gmail.com.
 
-###  Goals
-
-1. Introduce control theory
-2. Define common industry terms
-3. Outline the rest of this note-set!
-
-
 ## What is Control Theory?
 
 Our world is filled with human-made, and natural systems. We can model each system with _equations of motion_. These equations describe how each system's _state_ changes! A quick definition for _state_ is described below. We often want to __control__ the state in some way. Think about the populations of predators and prey in an ecosystem, inflation rates in an economy, the orientation of a rocket, the speed of a car, etc.
