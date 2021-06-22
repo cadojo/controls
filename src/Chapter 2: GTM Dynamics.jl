@@ -1,4 +1,4 @@
-# # Generic Aircraft Dynamics
+# # GTM Flight Dynamics
 # _How planes move!_
 
 # ## Overview 
@@ -7,6 +7,7 @@
 # dynamics throughout these notes, so it's worth spending some time 
 # covering aircraft dynamics generically. 
 
+# ## Generic Flight Dynamics 
 # There are many __dynamical modes__ that affect airplanes throughout flight. 
 # You can think of modes as oscillations in-time for _some_ subset of a system's 
 # state space. Aircraft have dynamical modes which produce aircraft oscillations
@@ -22,28 +23,53 @@
 # and throughout these notes! Just note that, at the end of the day, you _of course_
 # need to test your system's performance relative to all modeled dynamics.
 
-# 
 # The equations of motion for the longitudinal flight dynamics 
 # associated with _any_ generic aircraft are shown below. These 
 # are common equations, which are taught in many undergraduate 
 # aerospace engineering programs. 
-# 
+
 #=
 $\begin{equation}
     x = \begin{bmatrix} V \\ \alpha \\ q \\ \theta \end{bmatrix},\ \ 
     u = \begin{bmatrix} \delta_{elev} \\ \delta_{th} \end{bmatrix}
 \end{equation}$
 
-$ f(x) \triangleq \dot{x} = \begin{equation}\begin{align}     
+$f(x) \triangleq \dot{x} = \begin{equation}\begin{align*}     
     \dot{V} &= \frac{1}{m}\left(-D - m g \sin{(\theta - \alpha)} + T_x \cos{\alpha} + T_z \sin{\alpha} \right) \\
     \dot{\alpha} &= \frac{1}{m V}\left(-L + m g \cos{(\theta - \alpha)} - T_x \sin{\alpha} + T_z \cos{\alpha}\right) + q \\
     \dot{q} &= \frac{M + T_m}{Iyy} \\
     \dot{\theta} &= q 
-\end{align}\end{equation}$
+\end{align*}\end{equation}$
 =#
 
-# !!! note
-#       All of the polynomial approximations below were derived by [Chakraborty et al](https://www.sciencedirect.com/science/article/abs/pii/S0967066110002595).
+# ## GTM Dynamics
+# NASA's Generic Transport Model (GTM) is a radio-controlled model plane, which
+# is a scaled-down version of a generic passenger plane (think, one of the 
+# big jets you may fly on when you travel). This model is used for 
+# flight controls research. According to Chakraborty et al, 
+# aerodynamic coefficients are used by NASA to describe 
+# atmospheric lift, drag, and aerodynamic moments. These 
+# tables are __not__ publicly available. Still, Chakraborty et al
+# published [publicly available](https://www.sciencedirect.com/science/article/abs/pii/S0967066110002595)
+# polynomial _approximations_ of longitudinal GTM flight dynamics near select 
+# trim conditions. We'll cover trim conditions (also known as equilibrium points)
+# in future chapters. For now, its enough to understand that the polynomial approximation
+# they made is only accurate near select flight conditions. Of course, even near these 
+# select flight conditions, the approximation introduces error. Chakraborty et al
+# tracked the magnitude of these errors, but we'll just (falsely) treat this polynomial
+# approximation as fact throughout these notes. 
+#
+# If you're interested in reading more about the methodology behind these polynomial 
+# approximations, read [Chakraborty et al's paper](https://www.sciencedirect.com/science/article/abs/pii/S0967066110002595),
+# and check out a [Python implementation and associated paper](https://github.com/cadojo/Replicated-ROA-Analysis) 
+# which was completed as part of a University of Maryland aerospace engineering course project. 
+#
+# !!! note 
+#     These polynomial approximations were __also__ implemented with Julia as part of the 
+#     [`PolynomialGTM.jl`](https://github.com/cadojo/PolynomialGTM.jl) package!
+#
+# The polynomial approximations, as derived and published by Chakraborty et al, are shown below. 
+# I told you to be afraid!
 
 # __Special thanks to Michael Livecchi, a good (and _patient_) friend who read 
 # all of these equations out over the phone to make sure they were typed correctly!__

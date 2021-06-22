@@ -125,4 +125,4 @@ figure = plot(solutions; title = "Spring Mass Damper Simulation")
 # Okay, we just showed some applied modeling and simulation for spring-mass-damper dynamics.
 # What about the primary system we're analyzing throughout these notes, NASA's Generic Transport
 # Model (GTM)? The polynomial-approximated equations we'll be using are super long. Still want to 
-# see them? It's your funeral! Continue on to Chapter 2!
+# see them? Be afraid! Continue on to Chapter 2!
