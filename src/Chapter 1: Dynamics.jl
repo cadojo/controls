@@ -126,6 +126,14 @@ plot(solutions; title = "Spring Mass Damper Simulation")
 # Model (GTM)? The polynomial-approximated equations we'll be using are super long. Still want to 
 # see them? It's your funeral! 
 
+function foo()
+    println("This string is printed to stdout.")
+    return [1, 2, 3, 4]
+end
+
+foo()
+
+
 ```@raw html
 <mark>
 Special thank you to Michael Livecchi, a dear friend who 
