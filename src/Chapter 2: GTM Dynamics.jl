@@ -46,7 +46,7 @@ $\begin{align*}
 
 #=
 $\begin{equation}
-\begin{align&}
+\begin{align*}
 f_1(x,u) = &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
 &+ 3.705\times10^{-5}x_1^3x_2 x_3 
 - 2.184\times10^{-6}x_1^3x_3^2 \\
@@ -113,7 +113,6 @@ f_2(x,u) = & -3.709\times10^{-11}x_1^5x_3^2 + 6.869\times10^{-11}x_1x_2^3u_2^3 \
 \end{equation}$
 
 $\begin{equation}
-\begin{align*}
 \begin{align*}
 f_3(x,u) = & - 6.573\times10^{-9}x_1^5x_3^3 + 1.747\times10^{-6}x_1^4x_3^3 \\
 &- 1.548\times10^{-4}x_1^3x_3^3 - 3.569\times10^{-3}x_1^2x_2^3 \\
