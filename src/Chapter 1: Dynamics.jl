@@ -118,8 +118,7 @@ problem = let x₀ = 0.1, ẋ₀ = 0.0, dₙ = 0.5, kₙ = 0.9, fₙ = 1.0, Δt 
 end
 
 solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
-figure = plot(solutions; title = "Spring Mass Damper Simulation")
-#hide plot(figure)
+plot(solutions; title = "Spring Mass Damper Simulation")
 
 # ## What's Next?
 # Okay, we just showed some applied modeling and simulation for spring-mass-damper dynamics.
