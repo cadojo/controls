@@ -171,3 +171,9 @@ solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
 
 plot(solutions)
 
+# ## What's Next?
+# Now that we've covered our approximated GTM dynamics _specifically_, let's 
+# describe how these (simplified and approximated) dynamics are _still_ 
+# really hard to analyze! We'll find we need linear analysis techniques 
+# to help us characterize the stability and performance of our system. 
+# Future chapters will explain why! 😁
