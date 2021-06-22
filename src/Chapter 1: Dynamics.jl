@@ -134,7 +134,8 @@ plot(figure) # hide
 # all of these equations out over the phone to make sure they were typed correctly!__
 
 #=
-$\begin{align}
+$\begin{equation}
+\begin{align&}
 f_1(x,u) = &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
 &+ 3.705\times10^{-5}x_1^3x_2 x_3 
 - 2.184\times10^{-6}x_1^3x_3^2 \\
@@ -156,5 +157,6 @@ f_1(x,u) = &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
 + 4.541\times10^{-4}u_2^2 \\
 &+ 9.823x_2 + 3.261\times10^{-2}u_2 \\
 &- 9.807x_4 + 4.282\times10^{-1}
-\end{align}$
+\end{align*}
+\end{equation}$
 =#
