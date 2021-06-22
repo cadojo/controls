@@ -119,7 +119,7 @@ end
 
 solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
 figure = plot(solutions; title = "Spring Mass Damper Simulation")
-plot(figure) # hide
+#hide plot(figure)
 
 # ## GTM Dynamics Preview 
 # Okay, we just showed some applied modeling and simulation for spring-mass-damper dynamics.
@@ -130,7 +130,7 @@ plot(figure) # hide
 # !!! note
 #       All of the polynomial approximations below were derived by [Chakraborty et al](https://www.sciencedirect.com/science/article/abs/pii/S0967066110002595).
 
-# __Special thank you to Michael Livecchi, a good (and _patient_) friend who read 
+# __Special thanks to Michael Livecchi, a good (and _patient_) friend who read 
 # all of these equations out over the phone to make sure they were typed correctly!__
 
 #=
