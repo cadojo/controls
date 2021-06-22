@@ -125,38 +125,4 @@ figure = plot(solutions; title = "Spring Mass Damper Simulation")
 # Okay, we just showed some applied modeling and simulation for spring-mass-damper dynamics.
 # What about the primary system we're analyzing throughout these notes, NASA's Generic Transport
 # Model (GTM)? The polynomial-approximated equations we'll be using are super long. Still want to 
-# see them? It's your funeral! 
-
-# !!! note
-#       All of the polynomial approximations below were derived by [Chakraborty et al](https://www.sciencedirect.com/science/article/abs/pii/S0967066110002595).
-
-# __Special thanks to Michael Livecchi, a good (and _patient_) friend who read 
-# all of these equations out over the phone to make sure they were typed correctly!__
-
-#=
-$\begin{equation}
-\begin{align&}
-f_1(x,u) = &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
-&+ 3.705\times10^{-5}x_1^3x_2 x_3 
-- 2.184\times10^{-6}x_1^3x_3^2 \\
-&+ 2.203\times10^{-2}x_1^2x_2^3 - 2.836\times10^{-6}x_2^3u_2^2 \\
-& + 3.885\times10^{-7}x_2^2u_2^3 - 1.069\times10^{-6}x_1^3x_3 \\
-& - 4.517\times10^{-2}x_1^2x_2^2
-- 2.140\times10^{-3}x_1^2x_2u_1 \\
-&- 3.282\times10^{-3}x_1^2x_2 x_3 - 8.901\times10^{-4}x_1^2u_1^2 \\
-& + 9.677\times10^{-5}x_1^2x_3^2 - 2.037\times10^{-4}x_2^3u_2 \\
-&- 2.270\times10^{-4}x_2^2u_2^2
-- 2.912\times10^{-8}x_2u_2^3 \\
-&+ 1.591\times10^{-3}x_1^2x_2 - 4.077\times10^{-4}x_1^2u_1 \\
-& + 9.475\times10^{-5}x_1^2x_3 - 1.637x_2^3 \\
-&- 1.631\times10^{-2}x_2^2u_2 + 4.903x_2^2x_4 \\
-& -4.903x_2x_4^2 + 1.702\times10^{-5}x_2u_2^2 \\
-&- 7.771\times10^{-7}u_2^3 + 1.634x_4^3  \\
-&- 4.319\times10^{-4}x_1^2 - 2.142\times10^{-1}x_2^2 \\
-&+ 1.222\times10^{-3}x_2u_2
-+ 4.541\times10^{-4}u_2^2 \\
-&+ 9.823x_2 + 3.261\times10^{-2}u_2 \\
-&- 9.807x_4 + 4.282\times10^{-1}
-\end{align*}
-\end{equation}$
-=#
+# see them? It's your funeral! Continue on to Chapter 2!
