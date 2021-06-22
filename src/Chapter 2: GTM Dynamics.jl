@@ -42,7 +42,7 @@ $f(x) \triangleq \dot{x} = \begin{equation}\begin{align*}
 \end{align*}\end{equation}$
 =#
 
-# ## GTM Dynamics
+# ## Approximated GTM Dynamics
 # NASA's Generic Transport Model (GTM) is a radio-controlled model plane, which
 # is a scaled-down version of a generic passenger plane (think, one of the 
 # big jets you may fly on when you travel). This model is used for 
@@ -158,5 +158,16 @@ f_3(x,u) \approx & - 6.573\times10^{-9}x_1^5x_3^3 + 1.747\times10^{-6}x_1^4x_3^3
 $\begin{equation}
 f_4(x,u) \approx x_3 
 \end{equation}$
-
 =#
+
+# ## Example
+# We can use `DifferentialEquations` and `PolynomialGTM` to simulate this system! 
+
+using PolynomialGTM
+using DifferentialEquations
+
+problem   = ODEProblem(GTM) # there is a default flight condition stored in `GTM`
+solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
+
+plot(solutions)
+
