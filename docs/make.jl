@@ -1,7 +1,7 @@
 using Documenter
 using Literate
 
-for file ∈ ["Dynamics.jl"]
+for file ∈ ["Chapter 1: Dynamics.jl"]
     Literate.markdown(
         joinpath(@__DIR__, "..", "src", file),
         joinpath(@__DIR__, "src", "generated")
@@ -14,7 +14,7 @@ makedocs(
     authors = "Joe Carpinelli",
     pages = [
         "Introduction" => "index.md",
-        "Dynamics" => joinpath("generated", "Dynamics.md")
+        "Chapter 1: Dynamics" => joinpath("generated", "Chapter 1: Dynamics.md")
     ]
 )
 

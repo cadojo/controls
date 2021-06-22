@@ -126,8 +126,7 @@ plot(solutions; title = "Spring Mass Damper Simulation")
 # Model (GTM)? The polynomial-approximated equations we'll be using are super long. Still want to 
 # see them? It's your funeral! 
 
-@raw html
-```
+```@raw html
 <mark>
 Special thank you to Michael Livecchi, a dear friend who 
 read these equations out over the phone to make sure they were typed correctly!
