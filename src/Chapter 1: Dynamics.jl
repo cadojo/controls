@@ -126,9 +126,15 @@ plot(solutions; title = "Spring Mass Damper Simulation")
 # Model (GTM)? The polynomial-approximated equations we'll be using are super long. Still want to 
 # see them? It's your funeral! 
 
+using Plots
+x = range(0, stop=6π, length=1000)
+y1 = sin.(x)
+y2 = cos.(x)
+plot(x, [y1, y2])
+
 # __Special thank you to Michael Livecchi, a dear friend who read these equations out 
 # over the phone to make sure they were typed correctly!__
 
 using Latexify
 using PolynomialGTM
-print(latexify.(equations(GTM)))
+md"""latexify.(equations(GTM))"""
