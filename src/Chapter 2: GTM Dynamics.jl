@@ -30,12 +30,12 @@ $\begin{equation}
     u = \begin{bmatrix} \delta_{elev} \\ \delta_{th} \end{bmatrix}
 \end{equation}$
 
-$\begin{align*}     
+$\begin{align}     
     \dot{V} &= \frac{1}{m}\left(-D - m g \sin{(\theta - \alpha)} + T_x \cos{\alpha} + T_z \sin{\alpha} \right) \tag{} \\
     \dot{\alpha} &= \frac{1}{m V}\left(-L + m g \cos{(\theta - \alpha)} - T_x \sin{\alpha} + T_z \cos{\alpha}\right) + q \tag{} \\
     \dot{q} &= \frac{M + T_m}{Iyy} \tag{} \\
     \dot{\theta} &= q \tag{}
-\end{align*}$
+\end{align}$
 =#
 
 # !!! note
@@ -45,8 +45,7 @@ $\begin{align*}
 # all of these equations out over the phone to make sure they were typed correctly!__
 
 #=
-$\begin{equation}
-\begin{align*}
+$\begin{align}
 f_1(x,u) = &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
 &+ 3.705\times10^{-5}x_1^3x_2 x_3 
 - 2.184\times10^{-6}x_1^3x_3^2 \\
@@ -68,11 +67,9 @@ f_1(x,u) = &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
 + 4.541\times10^{-4}u_2^2 \\
 &+ 9.823x_2 + 3.261\times10^{-2}u_2 \\
 &- 9.807x_4 + 4.282\times10^{-1}
-\end{align*}
-\end{equation}$
+\end{align}$
 
-$\begin{equation}
-\begin{align*}
+$\begin{align}
 f_2(x,u) = & -3.709\times10^{-11}x_1^5x_3^2 + 6.869\times10^{-11}x_1x_2^3u_2^3 \\
 &+ 7.957\times10^{-10}x_1^4x_2 x_3 
 + 9.860\times10^{-9}x_1^4x_3^2 \\
@@ -109,11 +106,9 @@ f_2(x,u) = & -3.709\times10^{-11}x_1^5x_3^2 + 6.869\times10^{-11}x_1x_2^3u_2^3 \
 &- 2.304\times10^{-1}x_4^2 + 7.997\times10^{-7}u_2^2 \\
 &- 5.210\times10^{-3}x_1  - 2.013\times10^{-2}x_2 \\
 &+ 5.744\times10^{-5}u_2 + x_3 + 4.616\times10^{-1} 
-\end{align*}
-\end{equation}$
+\end{align}$
 
-$\begin{equation}
-\begin{align*}
+$\begin{align}
 f_3(x,u) = & - 6.573\times10^{-9}x_1^5x_3^3 + 1.747\times10^{-6}x_1^4x_3^3 \\
 &- 1.548\times10^{-4}x_1^3x_3^3 - 3.569\times10^{-3}x_1^2x_2^3 \\
 &+ 4.571\times10^{-3}x_1^2x_3^3 + 4.953\times10^{-5}x_1^3x_3 \\
@@ -122,8 +117,7 @@ f_3(x,u) = & - 6.573\times10^{-9}x_1^5x_3^3 + 1.747\times10^{-6}x_1^4x_3^3 \\
 &- 4.388\times10^{-3}x_1^2x_3 - 2.594\times10^{-7}u_2^3 \\
 & + 2.461\times10^{-3}x_1^2 + 1.516\times10^{-4}u_2^2 \\
 &+ 1.089\times10^{-2}u_2 + 1.430\times10^{-1}
-\end{align*}
-\end{equation}$
+\end{align}$
 
 $\begin{equation}
 f_4(x,u) = x_3 
