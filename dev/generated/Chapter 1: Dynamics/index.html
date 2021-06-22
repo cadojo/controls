@@ -24,28 +24,4 @@ end
 
 solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
 figure = plot(solutions; title = &quot;Spring Mass Damper Simulation&quot;)
-#hide plot(figure)</code></pre><h2 id="GTM-Dynamics-Preview"><a class="docs-heading-anchor" href="#GTM-Dynamics-Preview">GTM Dynamics Preview</a><a id="GTM-Dynamics-Preview-1"></a><a class="docs-heading-anchor-permalink" href="#GTM-Dynamics-Preview" title="Permalink"></a></h2><p>Okay, we just showed some applied modeling and simulation for spring-mass-damper dynamics. What about the primary system we&#39;re analyzing throughout these notes, NASA&#39;s Generic Transport Model (GTM)? The polynomial-approximated equations we&#39;ll be using are super long. Still want to see them? It&#39;s your funeral!</p><div class="admonition is-info"><header class="admonition-header">Note</header><div class="admonition-body"><p>All of the polynomial approximations below were derived by <a href="https://www.sciencedirect.com/science/article/abs/pii/S0967066110002595">Chakraborty et al</a>.</p></div></div><p><strong>Special thanks to Michael Livecchi, a good (and <em>patient</em>) friend who read all of these equations out over the phone to make sure they were typed correctly!</strong></p><p class="math-container">\[\begin{equation}
-\begin{align&amp;}
-f_1(x,u) = &amp;\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
-&amp;+ 3.705\times10^{-5}x_1^3x_2 x_3
-- 2.184\times10^{-6}x_1^3x_3^2 \\
-&amp;+ 2.203\times10^{-2}x_1^2x_2^3 - 2.836\times10^{-6}x_2^3u_2^2 \\
-&amp; + 3.885\times10^{-7}x_2^2u_2^3 - 1.069\times10^{-6}x_1^3x_3 \\
-&amp; - 4.517\times10^{-2}x_1^2x_2^2
-- 2.140\times10^{-3}x_1^2x_2u_1 \\
-&amp;- 3.282\times10^{-3}x_1^2x_2 x_3 - 8.901\times10^{-4}x_1^2u_1^2 \\
-&amp; + 9.677\times10^{-5}x_1^2x_3^2 - 2.037\times10^{-4}x_2^3u_2 \\
-&amp;- 2.270\times10^{-4}x_2^2u_2^2
-- 2.912\times10^{-8}x_2u_2^3 \\
-&amp;+ 1.591\times10^{-3}x_1^2x_2 - 4.077\times10^{-4}x_1^2u_1 \\
-&amp; + 9.475\times10^{-5}x_1^2x_3 - 1.637x_2^3 \\
-&amp;- 1.631\times10^{-2}x_2^2u_2 + 4.903x_2^2x_4 \\
-&amp; -4.903x_2x_4^2 + 1.702\times10^{-5}x_2u_2^2 \\
-&amp;- 7.771\times10^{-7}u_2^3 + 1.634x_4^3  \\
-&amp;- 4.319\times10^{-4}x_1^2 - 2.142\times10^{-1}x_2^2 \\
-&amp;+ 1.222\times10^{-3}x_2u_2
-+ 4.541\times10^{-4}u_2^2 \\
-&amp;+ 9.823x_2 + 3.261\times10^{-2}u_2 \\
-&amp;- 9.807x_4 + 4.282\times10^{-1}
-\end{align*}
-\end{equation}\]</p><hr/><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../">« Introduction</a><a class="docs-footer-nextpage" href="../Chapter 2: GTM Dynamics/">Chapter 2: GTM Dynamics »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Tuesday 22 June 2021 03:48">Tuesday 22 June 2021</span>. Using Julia version 1.6.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+#hide plot(figure)</code></pre><h2 id="GTM-Dynamics-Preview"><a class="docs-heading-anchor" href="#GTM-Dynamics-Preview">GTM Dynamics Preview</a><a id="GTM-Dynamics-Preview-1"></a><a class="docs-heading-anchor-permalink" href="#GTM-Dynamics-Preview" title="Permalink"></a></h2><p>Okay, we just showed some applied modeling and simulation for spring-mass-damper dynamics. What about the primary system we&#39;re analyzing throughout these notes, NASA&#39;s Generic Transport Model (GTM)? The polynomial-approximated equations we&#39;ll be using are super long. Still want to see them? It&#39;s your funeral! Continue on to Chapter 2!</p><hr/><p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../">« Introduction</a><a class="docs-footer-nextpage" href="../Chapter 2: GTM Dynamics/">Chapter 2: GTM Dynamics »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Tuesday 22 June 2021 03:54">Tuesday 22 June 2021</span>. Using Julia version 1.6.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
