@@ -128,19 +128,18 @@ plot(solutions; title = "Spring Mass Damper Simulation")
 
 function foo()
     println("This string is printed to stdout.")
-    return [1, 2, 3, 4]
+    return nothing # [1, 2, 3, 4]
 end
 
 foo()
 
-
 ```@raw html
-<mark>
-Special thank you to Michael Livecchi, a dear friend who 
-read these equations out over the phone to make sure they were typed correctly!
-</mark>
+<mark>Special thank you to Michael Livecchi, a dear friend who read these equations out over the phone to make sure they were typed correctly!</mark>
 ```
 
+```@raw html
+<iframe width="560" src="https://www.youtube.com/embed/_3JSRvaTRIQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
 using Latexify
 using PolynomialGTM
-latexify.(equations(GTM))
+print(latexify.(equations(GTM)))
