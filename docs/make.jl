@@ -26,5 +26,6 @@ makedocs(
 
 deploydocs(
     repo      = "https://github.com/cadojo/ControlTheoryNotes.jl",
-    devbranch = "main"
+    devbranch = "main",
+    versions = ["stable" => "v^", "manual", "v#.#", "v#.#.#"]
 )
