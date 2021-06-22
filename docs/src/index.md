@@ -6,10 +6,9 @@ _Fundamental control theory concepts, and applications with a (rough) approximat
 Control theory is hard! Lots of analysis is nuanced, and it's pretty easy to fall into incorrect assumptions
 and incomplete understanding. That's where this refresher comes in. We'll cover basic definitions through
 multi-input multi-output linear analysis, and everything in between. These notes are available as a 
-[website](jcarpinelli.dev/ControlTheoryNotes.jl/stable), and (soon) via 
-[PDF](https://github.com/cadojo/ControlTheoryNotes.jl/blob/main/docs/Controls%20Notes.pdf). 
-If you have any questions, suggestions, or corrections, always feel free to email the author (Joe Carpinelli)
-at jdcarpinelli@gmail.com.
+[website](jcarpinelli.dev/ControlTheoryNotes.jl/stable), and (soon) via PDF. 
+If you have any questions, suggestions, or corrections, always feel free to email the author, 
+[Joe Carpinelli](mailto:jdcarpinelli@gmail.com).
 
 ## What is Control Theory?
 
