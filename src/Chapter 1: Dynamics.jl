@@ -121,7 +121,7 @@ solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
 figure = plot(solutions; title = "Spring Mass Damper Simulation")
 #hide plot(figure)
 
-# ## GTM Dynamics Preview 
+# ## What's Next?
 # Okay, we just showed some applied modeling and simulation for spring-mass-damper dynamics.
 # What about the primary system we're analyzing throughout these notes, NASA's Generic Transport
 # Model (GTM)? The polynomial-approximated equations we'll be using are super long. Still want to 
