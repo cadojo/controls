@@ -96,7 +96,7 @@ eqs = [
     δ(ẋ)~ - d*ẋ - k*x + fₑ
 ]
 
-model = ODESystem(eqs, t, [x, ẋ], [fₑ, d, k]) 
+model = ODESystem(eqs, t, [x, ẋ], [fₑ, d, k]; name = "HarmonicOscillator") 
 
 # ### Simulating our Model
 # With `model` defined above, we can use `DifferentialEquations`

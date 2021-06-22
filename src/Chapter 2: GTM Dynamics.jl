@@ -168,10 +168,10 @@ f_4(x,u) \approx x_3
 using PolynomialGTM
 using DifferentialEquations
 
-problem   = ODEProblem(GTM) # there is a default flight condition stored in `GTM`
+problem   = ODEProblem(GTM, [], (0.0, 100.0), []) # there is a default flight condition stored in `GTM`
 solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
 
-plot(solutions)
+plot(solutions; title = "GTM Simulation")
 
 # ## What's Next?
 # Now that we've covered our approximated GTM dynamics _specifically_, let's 
