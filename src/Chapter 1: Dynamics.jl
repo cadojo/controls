@@ -118,7 +118,8 @@ problem = let x₀ = 0.1, ẋ₀ = 0.0, dₙ = 0.5, kₙ = 0.9, fₙ = 1.0, Δt 
 end
 
 solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
-plot(solutions; title = "Spring Mass Damper Simulation")
+figure = plot(solutions; title = "Spring Mass Damper Simulation")
+plot(figure) # hide
 
 # ## GTM Dynamics Preview 
 # Okay, we just showed some applied modeling and simulation for spring-mass-damper dynamics.
@@ -126,15 +127,34 @@ plot(solutions; title = "Spring Mass Damper Simulation")
 # Model (GTM)? The polynomial-approximated equations we'll be using are super long. Still want to 
 # see them? It's your funeral! 
 
-using Plots
-x = range(0, stop=6π, length=1000)
-y1 = sin.(x)
-y2 = cos.(x)
-plot(x, [y1, y2])
+# !!! note
+#       All of the polynomial approximations below were derived by [Chakraborty et al](https://www.sciencedirect.com/science/article/abs/pii/S0967066110002595).
 
-# __Special thank you to Michael Livecchi, a dear friend who read these equations out 
-# over the phone to make sure they were typed correctly!__
+# __Special thank you to Michael Livecchi, a good (and _patient_) friend who read 
+# all of these equations out over the phone to make sure they were typed correctly!__
 
-using Latexify
-using PolynomialGTM
-md"""latexify.(equations(GTM))"""
+#=
+$\begin{align}
+f_1(x,u) = &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
+&+ 3.705\times10^{-5}x_1^3x_2 x_3 
+- 2.184\times10^{-6}x_1^3x_3^2 \\
+&+ 2.203\times10^{-2}x_1^2x_2^3 - 2.836\times10^{-6}x_2^3u_2^2 \\
+& + 3.885\times10^{-7}x_2^2u_2^3 - 1.069\times10^{-6}x_1^3x_3 \\
+& - 4.517\times10^{-2}x_1^2x_2^2
+- 2.140\times10^{-3}x_1^2x_2u_1 \\
+&- 3.282\times10^{-3}x_1^2x_2 x_3 - 8.901\times10^{-4}x_1^2u_1^2 \\
+& + 9.677\times10^{-5}x_1^2x_3^2 - 2.037\times10^{-4}x_2^3u_2 \\
+&- 2.270\times10^{-4}x_2^2u_2^2
+- 2.912\times10^{-8}x_2u_2^3 \\
+&+ 1.591\times10^{-3}x_1^2x_2 - 4.077\times10^{-4}x_1^2u_1 \\
+& + 9.475\times10^{-5}x_1^2x_3 - 1.637x_2^3 \\
+&- 1.631\times10^{-2}x_2^2u_2 + 4.903x_2^2x_4 \\
+& -4.903x_2x_4^2 + 1.702\times10^{-5}x_2u_2^2 \\
+&- 7.771\times10^{-7}u_2^3 + 1.634x_4^3  \\
+&- 4.319\times10^{-4}x_1^2 - 2.142\times10^{-1}x_2^2 \\
+&+ 1.222\times10^{-3}x_2u_2
++ 4.541\times10^{-4}u_2^2 \\
+&+ 9.823x_2 + 3.261\times10^{-2}u_2 \\
+&- 9.807x_4 + 4.282\times10^{-1}
+\end{align}$
+=#
