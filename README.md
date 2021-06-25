@@ -23,7 +23,7 @@ ModelingToolkit.jl](https://github.com/SciML/ModelingToolkit.jl), polynomial air
 All text is locally host-able thanks to the excellent [`LiveServer.jl`](https://github.com/tlienart/LiveServer.jl).
 
 ```julia
-julia> ]install https://github.com/cadojo/ControlTheoryNotes.jl
+julia> ]add https://github.com/cadojo/ControlTheoryNotes.jl
 julia> import ControlTheoryNotes
 julia> ControlTheoryNotes.serve()
 ```
