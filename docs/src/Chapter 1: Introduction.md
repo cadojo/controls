@@ -5,10 +5,7 @@ _Why controls?_
 
 Control theory is hard! Lots of analysis is nuanced, and it's pretty easy to fall into incorrect assumptions
 and incomplete understanding. That's where this refresher comes in. We'll cover basic definitions through
-multi-input multi-output linear analysis, and everything in between. These notes are available as a 
-[website](https://jcarpinelli.dev/ControlTheoryNotes.jl/stable), and (soon) via PDF. 
-If you have any questions, suggestions, or corrections, always feel free to email the author, 
-[Joe Carpinelli](mailto:jdcarpinelli@gmail.com).
+multi-input multi-output linear analysis, and everything in between. 
 
 ## What is Control Theory?
 

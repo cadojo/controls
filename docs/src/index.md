@@ -26,6 +26,17 @@ discuss linear and nonlinear controller design and analysis.
 Throughout these notes, one system will be used as an example: a polynomial 
 model for a sub-scale radio-controlled aircraft, developed by NASA. 
 
+## Ways to Read
+These notes are available as a [website](https://jcarpinelli.dev/ControlTheoryNotes.jl/stable), and (soon) via PDF. 
+If you have any questions, suggestions, or corrections, always feel free to email the author, [Joe Carpinelli](mailto:jdcarpinelli@gmail.com).
+
+You can also host these notes locally! Simply execute the following commands in a Julia `REPL`.
+```julia
+julia> ]add https://github.com/cadojo/ControlTheoryNotes.jl
+julia> import ControlTheoryNotes
+julia> ControlTheoryNotes.serve()
+```
+
 ## Topics to Cover
 * __Dynamics:__ definitions, nonlinear dynamics, and linear dynamics
 * __Systems Theory:__ linear systems theory, introductory nonlinear systems theory
