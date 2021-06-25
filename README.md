@@ -18,3 +18,14 @@ All code is written with the Julia programming language. Modeling library courte
 ModelingToolkit.jl](https://github.com/SciML/ModelingToolkit.jl), polynomial aircraft dynamics courtesy of 
 [PolynomialGTM.jl](https://github.com/cadojo/PolynomialGTM.jl), and controls library courtesy of 
 [ControlSystems.jl](https://github.com/JuliaControl/ControlSystems.jl).
+
+## Local Hosting
+All text is locally host-able thanks to the excellent [`LiveServer.jl`](https://github.com/tlienart/LiveServer.jl).
+
+```julia
+julia> ]install https://github.com/cadojo/ControlTheoryNotes.jl
+julia> import ControlTheoryNotes
+julia> ControlTheoryNotes.serve()
+```
+
+Now you can read the text without internet!

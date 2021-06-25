@@ -215,9 +215,9 @@ version = "6.14.2"
 
 [[DiffEqNoiseProcess]]
 deps = ["DiffEqBase", "Distributions", "LinearAlgebra", "Optim", "PoissonRandom", "QuadGK", "Random", "Random123", "RandomNumbers", "RecipesBase", "RecursiveArrayTools", "Requires", "ResettableStacks", "StaticArrays", "Statistics"]
-git-tree-sha1 = "817b884e78a4fbabf6aceb54bbd1a733a511f453"
+git-tree-sha1 = "3d8842936fdb1d3d95929fcb99645a48d08fd0d7"
 uuid = "77a26b50-5914-5dd7-bc55-306e6241c503"
-version = "5.7.3"
+version = "5.8.0"
 
 [[DiffEqPhysics]]
 deps = ["DiffEqBase", "DiffEqCallbacks", "ForwardDiff", "LinearAlgebra", "Printf", "Random", "RecipesBase", "RecursiveArrayTools", "Reexport", "StaticArrays"]

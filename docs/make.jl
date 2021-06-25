@@ -1,5 +1,4 @@
 using Documenter
-using Literate
 
 makedocs(
     sitename = "🎢 Control Theory",
@@ -17,8 +16,9 @@ makedocs(
         "Chapter 5: Equilibrium Points" => "Chapter 5: Equilibrium Points.md",
         "Chapter 6: Linearization" => "Chapter 6: Linearization.md"
         ],
-        "Topic 2: Controls" => [],
-        "Topic 3: Analysis" => []
+        "Topic 2: Systems" => [],
+        "Topic 3: Controls" => [],
+        "Topic 4: Analysis" => []
     ]
 )
 

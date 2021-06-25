@@ -178,6 +178,7 @@ plot(solutions; linewidth = 2, dpi = 130, title = "GTM Simulation")
 ## What's Next?
 Take one more look at the polynomial models (the $f_1$ through $f_4$ equations) -- 
 note how these equations are _highly_ nonlinear. This $f$ notation is a standard 
-way to describe nonlinear dynamics. Linear dynamics are extremely valuable, because 
+way to describe nonlinear dynamics. There is also a standard way to describe 
+linear dynamics: state-space models. Linear dynamics are extremely valuable, because 
 (to paraphrase a [famous quote](https://twitter.com/ScienceTip/status/1295181058590244864)) 
 we know how to solve them! Next, we'll take a look at general _linear_ dynamics.

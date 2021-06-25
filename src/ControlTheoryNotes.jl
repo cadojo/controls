@@ -9,12 +9,13 @@ at _jdcarpinelli@gmail.com_ if you have questions!
 module ControlTheoryNotes
 
 using LiveServer
-using Literate 
-using PolynomialGTM
-using Plots
 
-function serve() 
-    LiveServer.servedocs(; literate = joinpath(@__DIR__, "..", "docs", "src", "generated"))
+"""
+Serves the note-set locally on your computer. Keyword 
+arguments are passed directly to `LiveServer.servedocs`.
+"""
+function serve(; kwargs...) 
+    LiveServer.servedocs(kwargs...)
 end
 
 end # module
