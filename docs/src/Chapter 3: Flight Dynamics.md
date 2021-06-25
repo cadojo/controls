@@ -28,12 +28,12 @@ associated with _any_ generic aircraft are shown below. These
 are common equations, which are taught in many undergraduate 
 aerospace engineering programs. 
 
-$\begin{equation}
+```math
     x = \begin{bmatrix} V \\ \alpha \\ q \\ \theta \end{bmatrix},\ \ 
     u = \begin{bmatrix} \delta_{elev} \\ \delta_{th} \end{bmatrix}
-\end{equation}$
+```
 
-$\begin{equation}
+```math
 f(x) \triangleq \dot{x} = \begin{bmatrix}
     \dot{V} \\ \dot{\alpha} \\ \dot{q} \\ \dot{\theta}
 \end{bmatrix} = \begin{bmatrix}
@@ -41,7 +41,8 @@ f(x) \triangleq \dot{x} = \begin{bmatrix}
     \frac{1}{m V}\left(-L + m g \cos{(\theta - \alpha)} - T_x \sin{\alpha} + T_z \cos{\alpha}\right) + q \\
     \frac{M + T_m}{Iyy} \\
     q
-\end{bmatrix}\end{equation}$ 
+\end{bmatrix}
+```
 
 ## Approximated GTM Dynamics
 NASA's Generic Transport Model (GTM) is a radio-controlled model plane, which
@@ -71,11 +72,11 @@ I told you to be afraid!
     These polynomial approximations were __also__ implemented with Julia as part of the 
     [`PolynomialGTM.jl`](https://github.com/cadojo/PolynomialGTM.jl) package!
 
-__Special thanks to Michael Livecchi, a good (and _patient_) friend who read 
-all of these equations out over the phone to make sure they were typed correctly!__
+!!! tip "Credits" 
+    Special thanks to Michael Livecchi, a good (and _patient_) friend who read all of these equations out over the phone to make sure they were typed correctly!
 
-$\begin{equation}
-\begin{align*}
+```math
+\begin{aligned}
 f_1(x,u) \approx &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 \\
 &+ 3.705\times10^{-5}x_1^3x_2 x_3 
 - 2.184\times10^{-6}x_1^3x_3^2 \\
@@ -97,11 +98,11 @@ f_1(x,u) \approx &\ 1.233\times10^{-8}x_1^4x_3^2 + 4.853\times10^{-9}x_2^3u_2^3 
 + 4.541\times10^{-4}u_2^2 \\
 &+ 9.823x_2 + 3.261\times10^{-2}u_2 \\
 &- 9.807x_4 + 4.282\times10^{-1}
-\end{align*}
-\end{equation}$
+\end{aligned}
+```
 
-$\begin{equation}
-\begin{align*}
+```math
+\begin{aligned}
 f_2(x,u) \approx & -3.709\times10^{-11}x_1^5x_3^2 + 6.869\times10^{-11}x_1x_2^3u_2^3 \\
 &+ 7.957\times10^{-10}x_1^4x_2 x_3 
 + 9.860\times10^{-9}x_1^4x_3^2 \\
@@ -138,11 +139,11 @@ f_2(x,u) \approx & -3.709\times10^{-11}x_1^5x_3^2 + 6.869\times10^{-11}x_1x_2^3u
 &- 2.304\times10^{-1}x_4^2 + 7.997\times10^{-7}u_2^2 \\
 &- 5.210\times10^{-3}x_1  - 2.013\times10^{-2}x_2 \\
 &+ 5.744\times10^{-5}u_2 + x_3 + 4.616\times10^{-1} 
-\end{align*}
-\end{equation}$
+\end{aligned}
+```
 
-$\begin{equation}
-\begin{align*}
+```math
+\begin{aligned}
 f_3(x,u) \approx & - 6.573\times10^{-9}x_1^5x_3^3 + 1.747\times10^{-6}x_1^4x_3^3 \\
 &- 1.548\times10^{-4}x_1^3x_3^3 - 3.569\times10^{-3}x_1^2x_2^3 \\
 &+ 4.571\times10^{-3}x_1^2x_3^3 + 4.953\times10^{-5}x_1^3x_3 \\
@@ -151,27 +152,32 @@ f_3(x,u) \approx & - 6.573\times10^{-9}x_1^5x_3^3 + 1.747\times10^{-6}x_1^4x_3^3
 &- 4.388\times10^{-3}x_1^2x_3 - 2.594\times10^{-7}u_2^3 \\
 & + 2.461\times10^{-3}x_1^2 + 1.516\times10^{-4}u_2^2 \\
 &+ 1.089\times10^{-2}u_2 + 1.430\times10^{-1}
-\end{align*}
-\end{equation}$
+\end{aligned}
+```
 
-$\begin{equation}
+```math
 f_4(x,u) \approx x_3 
-\end{equation}$
+```
 
 ## Example
-We can use `DifferentialEquations` and `PolynomialGTM` to simulate this system! 
+We can use `DifferentialEquations` and `PolynomialGTM` to simulate this system! Note that `PolynomialGTM`
+has placed all states and inputs at a trim condition as default values, so empty state and parameter
+initial conditions can be provided to `ODEProblem`. 
 
+```@example Ch3
+using Plots
 using PolynomialGTM
 using DifferentialEquations
 
-problem   = ODEProblem(GTM, [], (0.0, 100.0), []) # there is a default flight condition stored in `GTM`
-solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
+problem   = ODEProblem(GTM, [], (0.0, 100.0), [])
+solutions = solve(problem; reltol = 1e-12, abstol = 1e-12)
 
-plot(solutions; title = "GTM Simulation")
+plot(solutions; linewidth = 2, dpi = 130, title = "GTM Simulation")
+```
 
 ## What's Next?
-Now that we've covered our approximated GTM dynamics _specifically_, let's 
-describe how these (simplified and approximated) dynamics are _still_ 
-really hard to analyze! We'll find we need linear analysis techniques 
-to help us characterize the stability and performance of our system. 
-Future chapters will explain why! 😁
+Take one more look at the polynomial models (the $f_1$ through $f_4$ equations) -- 
+note how these equations are _highly_ nonlinear. This $f$ notation is a standard 
+way to describe nonlinear dynamics. Linear dynamics are extremely valuable, because 
+(to paraphrase a [famous quote](https://twitter.com/ScienceTip/status/1295181058590244864)) 
+we know how to solve them! Next, we'll take a look at general _linear_ dynamics.

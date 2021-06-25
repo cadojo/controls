@@ -1,12 +1,12 @@
 # Introduction
-_What will be do here?_
+_Why controls?_
 
 ## Overview
 
 Control theory is hard! Lots of analysis is nuanced, and it's pretty easy to fall into incorrect assumptions
 and incomplete understanding. That's where this refresher comes in. We'll cover basic definitions through
 multi-input multi-output linear analysis, and everything in between. These notes are available as a 
-[website](jcarpinelli.dev/ControlTheoryNotes.jl/stable), and (soon) via PDF. 
+[website](https://jcarpinelli.dev/ControlTheoryNotes.jl/stable), and (soon) via PDF. 
 If you have any questions, suggestions, or corrections, always feel free to email the author, 
 [Joe Carpinelli](mailto:jdcarpinelli@gmail.com).
 
@@ -15,14 +15,14 @@ If you have any questions, suggestions, or corrections, always feel free to emai
 Our world is filled with human-made, and natural systems. We can model each system with _equations of motion_. These equations describe how each system's _state_ changes! A quick definition for _state_ is described below. We often want to __control__ the state in some way. Think about the populations of predators and prey in an ecosystem, inflation rates in an economy, the orientation of a rocket, the speed of a car, etc.
 
 !!! note "Definitions"
-	__State__ – a set of values that _completely describe_ a system!
+	__State__ – a set of values that _completely describe_ a system.
 
 Over the years, smart people have developed a field known as __controls__. Control theory is a broad term which includes...
 
 * the math used to describe systems you'd like to control
 * the analysis tools you use to see how well your system behaves
 * the strategies for developing controllers
-* more stuff like this!
+* more stuff like this
 
 We'll need a few more definitions before we really get started. 
 

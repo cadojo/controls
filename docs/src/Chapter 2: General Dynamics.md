@@ -54,7 +54,7 @@ will be equal to the sum of our external force $f_e$, the spring force $k x$, an
 force due to friction $d \dot{x}$. Summing these forces produces the following (common)
 spring-mass-damper equation, where $m$ is the mass of the block. 
 
-$\begin{equation} f_e = m \ddot{x} + d \dot{x} + k x \end{equation}$
+$f_e = m \ddot{x} + d \dot{x} + k x$
 
 We have our model! This is a second-order differential equation. It helps to divide 
 all variables into two groups: parameters, and states. States describe the system 
@@ -97,7 +97,8 @@ eqs = [
     δ(ẋ)~ - d*ẋ - k*x + fₑ
 ]
 
-model = ODESystem(eqs, t, [x, ẋ], [fₑ, d, k]; name = :HarmonicOscillator) 
+model = ODESystem(eqs, t, [x, ẋ], [fₑ, d, k]; name = :HarmonicOscillator)
+nothing # hide
 ```
 
 ### Simulating our Model
@@ -121,7 +122,7 @@ problem = let x₀ = 0.1, ẋ₀ = 0.0, dₙ = 0.5, kₙ = 0.9, fₙ = 1.0, Δt 
 end
 
 solutions = solve(problem, Tsit5(); reltol = 1e-12, abstol = 1e-12)
-plot(solutions; title = "Spring Mass Damper Simulation")
+plot(solutions; linewidth = 2, dpi = 130, title = "Spring Mass Damper Simulation")
 ```
 
 ## What's Next?
