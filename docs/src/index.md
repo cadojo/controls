@@ -1,20 +1,17 @@
 # Control Theory Fundamentals
 _Fundamental control theory concepts, and applications with a (rough) approximation of an aircraft model!_
 
-!!! warning "Notes In-Development!"
-    These notes are under active development! They're being posted as they're written -- it's more fun that way.
+```@eval
+import Pkg
+using Markdown
+import ControlTheoryNotes
+v = Pkg.TOML.parsefile(joinpath(dirname(string(first(methods(ControlTheoryNotes.eval)).file)), "..", "Project.toml"))["version"]
+Markdown.Admonition("warning", "In-Development! Version $v", [
+    md"These notes are under active development! They're being posted as they're written -- it's more fun that way.
     You'll pretty easily find typos, blank pages, and mistakes. It's all part of the process!
     If you have any questions about these notes, don't hesitate to [email](mailto:jdcarpinelli@gmail.com)
-    the author!
-
-```@eval
-pkgversion(m::Module) = Pkg.TOML.parsefile(joinpath(dirname(string(first(methods(m.eval)).file)), "..", "Project.toml")["version"]
-import ControlTheoryNotes
-md"""
-!!! tip "Current Version: $(pkgversion(ControlTheoryNotes))"
-    I'd like all of the topics outlined below to have complete drafts posted here by the
-    end of 2021. No promises though! Note the version numbers on [GitHub](https://github.com/cadojo/ControlTheoryNotes.jl).
-"""
+    the author!",
+    md"I'd like all of the topics outlined below to have complete drafts posted here by the end of 2021. No promises though! Note the version numbers on [GitHub](https://github.com/cadojo/ControlTheoryNotes.jl)."])
 ```
 
 ## About these Notes
