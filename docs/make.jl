@@ -5,7 +5,7 @@ makedocs(
     format = Documenter.HTML(),
     authors = "Joe Carpinelli",
     pages = [
-        "Frontmatter" => [
+        "Front Matter" => [
             "Welcome!" => "index.md",
             "Chapter 1: Introduction" => "Chapter 1: Introduction.md"
         ],
