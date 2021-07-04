@@ -1,9 +1,10 @@
 name = "ControlTheoryNotes"
 uuid = "23a0b9d2-fc7b-410f-9a67-f99726ff6e68"
 authors = ["Joe Carpinelli <jdcarpinelli@gmail.com>"]
-version = "0.3.3"
+version = "0.3.4"
 
 [deps]
+ControlSystems = "a6e380b2-a6ca-5380-bf3e-84a91bcd477e"
 DifferentialEquations = "0c46a032-eb83-5123-abaf-570d42b7fbaa"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 Latexify = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"

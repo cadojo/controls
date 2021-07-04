@@ -39,7 +39,7 @@ julia> ControlTheoryNotes.serve()
 
 ## Topics to Cover
 * __Dynamics:__ definitions, nonlinear dynamics, and linear dynamics
-* __Systems Theory:__ linear systems theory, introductory nonlinear systems theory
+* __Systems:__ linear systems theory, introductory nonlinear systems theory
 * __Controls:__ control design for linear and nonlinear systems
 * __Analysis:__ frequency analysis & other linear analysis techniques, nonlinear analysis
 
