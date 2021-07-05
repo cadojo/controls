@@ -15,6 +15,7 @@ Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 PolynomialGTM = "d0486fca-abc3-4e94-983c-1d27790b80a4"
 
 [compat]
+ControlSystems = "0.10"
 DifferentialEquations = "6"
 Documenter = "0.27"
 Latexify = "0.15"
