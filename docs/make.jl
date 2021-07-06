@@ -17,10 +17,10 @@ makedocs(
         "Chapter 6: Linearization" => joinpath("Dynamics", "Chapter 6: Linearization.md")
         ],
         "Topic 2: Systems" => [],
-        "Topic 3: Controls" => [
+        "Topic 3: Controls" => [],
+        "Topic 4: Analysis" => [
             "Draft: Disk Margins" => joinpath("Analysis", "Draft: Disk Margins.md")
-        ],
-        "Topic 4: Analysis" => []
+        ]
     ]
 )
 
