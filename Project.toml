@@ -16,6 +16,7 @@ PolynomialGTM = "d0486fca-abc3-4e94-983c-1d27790b80a4"
 
 [compat]
 DifferentialEquations = "6"
+ControlSystems = "0.10"
 Documenter = "0.27"
 Latexify = "0.15"
 Literate = "2"
