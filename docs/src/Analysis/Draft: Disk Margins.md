@@ -27,29 +27,31 @@ why they're useful.
 
 ## Computing the Disk Margin
 
-!!! note "Definitions"
-    __Disk Margins__ – Say you have some transfer function $G(s)$. How robust is this system to simultaneous
-    gain _and_ phase variations? We can introduce gain to our system by multiplying $G(s)$ by some real constant
-    $\alpha$. We can introduce phase to our system by multiplying our system by some complex constant
-    $\beta i$. It follows, then, that we can introduce simultaneous gain and phase variations by 
-    multiplying $G(s)$ by the _sum_ of $\alpha$ and $\beta i$. This sum forms a complex number!  
-      
-    We can left-multiply $G(s)$ by some complex number $\alpha + \beta i$, and determine
-    if the resulting system is stable. Now, what if we try _hundreds_ or _thousands_ of different $\alpha$
-    and $\beta$ values, and we plot each stable result in _green_, and each unstable result in _red_?
-    We'd end up with a plot with a red background, and a shaded green region which shows the gain and 
-    phase combinations that result in a __stable__ system! The _disk margin_ is the largest circle we can fit in 
-    the _stable_ (green) region of the plot, with one additional caveat – the disk __must__ contain the point 
-    $\alpha + \beta i = 1$, that is $\{\alpha = 1, \beta = 0\}$. 
+!!! warning
+    To do!
 
-#### An Excellent External Resource
+
+#### External Resources
+
+##### Overview Paper
+
+A thorough [paper](https://arxiv.org/abs/2003.04771), written by 
+Peter Seiler, Andrew Packard, and Pascal Gahinet, covers disk margins in detail. 
+
+##### Summary Video
+
+Brian Douglass has authored a fantastic 
+[video](https://www.youtube.com/embed/XazdN6eZF80) as an 
+accompanyment to the previously mentioned paper. 
+
 ```@raw html
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XazdN6eZF80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
 
 ## Example
 
-First, let's choose a SISO channel for our linearized dynamics polynomial aircraft dynamics!
+First, let's linearize our polynomial aircraft dynamics about a trim condition. The 
+trim condition used here is a _default_ condition provided by `PolynomialGTM`.
 
 ```@example Disk Margins
 using LinearAlgebra
@@ -57,10 +59,10 @@ using PolynomialGTM
 using ControlSystems
 using ModelingToolkit
 
-n = length(states(GTM))
-p = length(controls(GTM))
-
 LinearizedGTM  = let
+
+    n = length(states(GTM))
+    p = length(controls(GTM))
 
     A = let
         symbolic = calculate_jacobian(GTM)
@@ -83,31 +85,78 @@ LinearizedGTM  = let
 end
 ```
 
-Turns out, the system is stable __without__ any changes in controls!
-We can verify this by checking that the eigenvalues of the zero-input dynamics
-(the `A` matrix) are _all_ in the left-half of the complex plane. We can _also_
-check stability with the `isstable` function provided by `ControlSystems`.
-
-```@example Disk Margins
-isstable(LinearizedGTM)
-```
-
-Now we can start calculating the disk margin for our system! Note that 
+Alright, so our __open-loop__ system is stable. Note that 
 the model we're using is a MIMO system – we'll have one transfer function 
 for every input-output channel. As a result, $G(s)$ is a $4\times2$ 
 transfer-function-matrix. 
 
 ```@example Disk Margins
-L = tf(LinearizedGTM)
+K = lqr(LinearizedGTM, I, I)
+```
 
-α = range(-10; stop=10, length=100)
-β = range(-2π; stop=2π, length=100) .* im
-Γ = [αᵢ + βⱼ for αᵢ ∈ α for βⱼ ∈ β] 
+```@example Disk Margins
+using Plots
+using StaticArrays
+using CoordinateTransformations
 
-o = size(LinearizedGTM.C, 1)
-all_channels_stable(γ) = all([isstable(γ * L[i, j]) for i ∈ 1:o for j ∈ 1:p])
+"""
+Returns a plot showing stable and unstable variations.
+The radius `α` of the largest possible disk in the green 
+region, centered at some skew value `e`, is the disk magin.
+
+All `kwargs` are passed directly to `Plots.plot`.
+"""
+function diskmarginplot(
+    L::TransferFunction;
+    gains  = range(0.; stop=2, length=100),
+    phases = range(-2; stop=2, length=50),
+    kwargs...)
+
+    Γ = map((x -> x[1] + x[2]*im), Base.Iterators.product(gains, phases))
+    
+    num_inputs   = size(L, 2)
+    num_outputs  = size(L, 1)
+
+    stability_with_variation = [
+        let
+            channel_stability = [
+                isstable(γ*L[i,j] / (1 + γ*L[i,j])) 
+                for i ∈ 1:num_outputs for j ∈ 1:num_inputs
+            ]
+            all(channel_stability)
+        end
+        for γ ∈ Γ
+    ]
+
+    freqinfo = [
+        "Gain: $(20*log10(real(γ))) dB\nPhase: $(rad2deg(imag(γ))) deg"
+        for γ ∈ Γ
+    ]
+
+    defaults = (; title  = "Disk Margin Plot", 
+                  xlabel = "Real", 
+                  ylabel = "Imaginary")
+
+    figure = plot(; merge(defaults, kwargs)...)
+
+    for (stable, variation) ∈ zip(stability_with_variation, Γ)
+        if stable
+            scatter!(figure, [real(variation)], [imag(variation)]; 
+                    label       = :none, 
+                    markersize  = 2, 
+                    markercolor = :green)
+        end
+    end
+
+    # plot!(figure; hover=freqinfo)
+
+    return figure
+end
+
+diskmarginplot(
+    series(tf(LinearizedGTM), tf(K))
+)
 ```
 
 !!! warning
     TODO – this page is unfinished!
-    

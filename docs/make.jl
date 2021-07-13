@@ -7,7 +7,7 @@ makedocs(
     pages = [
         "Front Matter" => [
             "Welcome!" => "index.md",
-            "Chapter 1: Introduction" => "Chapter 1: Introduction.md"
+            "Chapter 1: Introduction" => joinpath("Introduction", "Chapter 1: Introduction.md")
         ],
         "Topic 1: Dynamics" => [
         "Chapter 2: General Dynamics" => joinpath("Dynamics", "Chapter 2: General Dynamics.md"),
