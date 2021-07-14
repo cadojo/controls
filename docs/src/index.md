@@ -1,18 +1,12 @@
 # 🎢 Exploring Control Theory
 _Fundamental control theory concepts, and applications with a (rough) approximation of an aircraft model!_
 
-```@eval
-import Pkg
-using Markdown
-import ControlTheoryNotes
-v = Pkg.TOML.parsefile(joinpath(dirname(string(first(methods(ControlTheoryNotes.eval)).file)), "..", "Project.toml"))["version"]
-Markdown.Admonition("warning", "In-Development! Version $v", [
-    md"These notes are under active development! They're being posted as they're written -- it's more fun that way.
+!!! warning "In Development: Version 0.3.4"
+    These notes are under active development! They're being posted as they're written -- it's more fun that way.
     You'll pretty easily find typos, blank pages, and mistakes. It's all part of the process!
     If you have any questions about these notes, don't hesitate to [email](mailto:jdcarpinelli@gmail.com)
-    the author!",
-    md"I'd like all of the topics outlined below to have complete drafts posted here by the end of 2021. No promises though! Note the version numbers on [GitHub](https://github.com/cadojo/ControlTheoryNotes.jl)."])
-```
+    the author! mI'd like all of the topics outlined below to have complete drafts posted here by the end of 2021. 
+    No promises though! Note the version numbers on [GitHub](https://github.com/cadojo/exploring-control-theory).
 
 ## About these Notes
 Welcome to publicly available notes, with working and run-able examples, which 
@@ -29,13 +23,6 @@ model for a sub-scale radio-controlled aircraft, developed by NASA.
 ## Ways to Read
 These notes are available as a [website](https://jcarpinelli.dev/ControlTheoryNotes.jl/stable), and (soon) via PDF. 
 If you have any questions, suggestions, or corrections, always feel free to email the author, [Joe Carpinelli](mailto:jdcarpinelli@gmail.com).
-
-You can also host these notes locally! Simply execute the following commands in a Julia `REPL`.
-```julia
-julia> ]add https://github.com/cadojo/ControlTheoryNotes.jl
-julia> import ControlTheoryNotes
-julia> ControlTheoryNotes.serve()
-```
 
 ## Topics to Cover
 * __Dynamics:__ definitions, nonlinear dynamics, and linear dynamics
