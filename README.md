@@ -1,6 +1,6 @@
-[![Docs](https://github.com/cadojo/ControlTheoryNotes.jl/workflows/Documentation/badge.svg)](https://cadojo.github.io/ControlTheoryNotes.jl/dev)
+[![Docs](https://github.com/cadojo/Exploring-Control-Theory/workflows/Documentation/badge.svg)](https://cadojo.github.io/exploring-control-theory/dev)
 
-# Control Theory Notes
+# Exploring Control Theory
 _Learning control theory by analyzing an approximated model for aircraft dynamics!_
 
 ## Overview
