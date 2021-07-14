@@ -26,6 +26,7 @@ StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 
 [compat]
 ControlSystems = "0.10"
+CoordinateTransformations = "0.6"
 DifferentialEquations = "6"
 Documenter = "0.27"
 Latexify = "0.15"
