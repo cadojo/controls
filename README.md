@@ -1,4 +1,4 @@
-[![Docs](https://github.com/cadojo/Exploring-Control-Theory/workflows/Documentation/badge.svg)](https://cadojo.github.io/Exploring-Control-Theory/dev)
+[![Docs](https://github.com/cadojo/exploring-control-theory/workflows/Documentation/badge.svg)](https://cadojo.github.io/exploring-control-theory/stable)
 
 # Exploring Control Theory
 _Learning control theory by analyzing an approximated model for aircraft dynamics!_
@@ -7,9 +7,11 @@ _Learning control theory by analyzing an approximated model for aircraft dynamic
 
 This repository contains notes (with concrete examples) 
 which provide an introduction to control theory. We'll cover concepts like 
-nonlinear dynamics, linearization, frequency analysis, loop shaping, and 
-other general control concepts. Each notebook will only look at __one__
-plant (a.k.a. one dynamical system that we want to control): a [polynomial 
+linear and nonlinear dynamics, linear and nonlinear systems theory,
+linearization, frequency analysis, loop shaping, stability analysis, 
+robustness analysis, and other general control concepts. For the most part, 
+allconcepts will be applied to __one__ plant (a.k.a. one dynamical 
+system that we want to control): a [polynomial 
 approximation](https://github.com/cadojo/PolynomialGTM.jl) for a [NASA subscale model aircraft's](https://ntrs.nasa.gov/api/citations/20040085988/downloads/20040085988.pdf)
 flight dynamics. 
 
