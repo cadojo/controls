@@ -1,7 +1,7 @@
 name = "ControlTheoryNotes"
 uuid = "23a0b9d2-fc7b-410f-9a67-f99726ff6e68"
 authors = ["Joe Carpinelli <jdcarpinelli@gmail.com>"]
-version = "0.3.4"
+version = "0.3.5"
 
 [deps]
 ControlSystems = "a6e380b2-a6ca-5380-bf3e-84a91bcd477e"

@@ -1,4 +1,4 @@
-# Control Theory Fundamentals
+# 🎢 Exploring Control Theory
 _Fundamental control theory concepts, and applications with a (rough) approximation of an aircraft model!_
 
 ```@eval

@@ -73,7 +73,7 @@ LinearizedGTM  = let
     end
 
     B = let
-        symbolic = Symbolics.jacobian(getfield.(equations(GTM), :RHS), parameters(GTM))
+        symbolic = Symbolics.jacobian(getfield.(equations(GTM), :rhs), parameters(GTM))
         numeric  = map(element -> substitute(element, GTM.defaults), symbolic)
 
         numeric .|> ModelingToolkit.value .|> Float64

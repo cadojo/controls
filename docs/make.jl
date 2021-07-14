@@ -1,27 +1,35 @@
 using Documenter
 
-makedocs(
-    sitename = "🎢 Control Theory",
-    format = Documenter.HTML(),
-    authors = "Joe Carpinelli",
+sections = ("Dynamics", "Systems", "Controls", "Analysis")
+for section in sections
+    isdir(joinpath(@__DIR__, "src", section)) || mkdir(joinpath(@__DIR__, "src", section))
+end
+
+isdir(joinpath(@__DIR__, "src", "Front Matter")) || mkdir(joinpath(@__DIR__, "src", "Front Matter")) 
+front = "Front Matter" => [
+    "Welcome" => "index.md",
+    "Chapter 1: Introduction" => joinpath("Front Matter", "Chapter 1: Introduction.md")
+]
+
+chapters = let topic = 1
     pages = [
-        "Front Matter" => [
-            "Welcome!" => "index.md",
-            "Chapter 1: Introduction" => joinpath("Introduction", "Chapter 1: Introduction.md")
-        ],
-        "Topic 1: Dynamics" => [
-        "Chapter 2: General Dynamics" => joinpath("Dynamics", "Chapter 2: General Dynamics.md"),
-        "Chapter 3: Flight Dynamics" => joinpath("Dynamics", "Chapter 3: Flight Dynamics.md"),
-        "Chapter 4: Linear Dynamics" => joinpath("Dynamics", "Chapter 4: Linear Dynamics.md"),
-        "Chapter 5: Equilibrium Points" => joinpath("Dynamics", "Chapter 5: Equilibrium Points.md"),
-        "Chapter 6: Linearization" => joinpath("Dynamics", "Chapter 6: Linearization.md")
-        ],
-        "Topic 2: Systems" => [],
-        "Topic 3: Controls" => [],
-        "Topic 4: Analysis" => [
-            "Draft: Disk Margins" => joinpath("Analysis", "Draft: Disk Margins.md")
-        ]
+        begin 
+            section_string = "Topic $topic: $section"
+            topic += 1
+            section_string 
+        end => [
+            replace(page, ".md"=>"") => joinpath(section, page)
+            for page in readdir(joinpath(@__DIR__, "src", section))
+        ]   
+        for section in sections
     ]
+end
+
+makedocs(
+    sitename = "Exploring Control Theory",
+    format   = Documenter.HTML(),
+    authors  = "Joe Carpinelli",
+    pages    = vcat(front, chapters)
 )
 
 deploydocs(
