@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Draft: Disk Margins · 🎢 Control Theory</title><script data-outdated-warner src="../../assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.039/juliamono-regular.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.11/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><div class="docs-package-name"><span class="docs-autofit"><a href="../../">🎢 Control Theory</a></span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><span class="tocitem">Front Matter</span><ul><li><a class="tocitem" href="../../">Welcome!</a></li><li><a class="tocitem" href="../../Introduction/Chapter 1: Introduction/">Chapter 1: Introduction</a></li></ul></li><li><span class="tocitem">Topic 1: Dynamics</span><ul><li><a class="tocitem" href="../../Dynamics/Chapter 2: General Dynamics/">Chapter 2: General Dynamics</a></li><li><a class="tocitem" href="../../Dynamics/Chapter 3: Flight Dynamics/">Chapter 3: Flight Dynamics</a></li><li><a class="tocitem" href="../../Dynamics/Chapter 4: Linear Dynamics/">Chapter 4: Linear Dynamics</a></li><li><a class="tocitem" href="../../Dynamics/Chapter 5: Equilibrium Points/">Chapter 5: Equilibrium Points</a></li><li><a class="tocitem" href="../../Dynamics/Chapter 6: Linearization/">Chapter 6: Linearization</a></li></ul></li><li><span class="tocitem">Topic 2: Systems</span></li><li><span class="tocitem">Topic 3: Controls</span></li><li><span class="tocitem">Topic 4: Analysis</span><ul><li class="is-active"><a class="tocitem" href>Draft: Disk Margins</a><ul class="internal"><li><a class="tocitem" href="#Overview"><span>Overview</span></a></li><li><a class="tocitem" href="#Computing-the-Disk-Margin"><span>Computing the Disk Margin</span></a></li><li><a class="tocitem" href="#Example"><span>Example</span></a></li></ul></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Topic 4: Analysis</a></li><li class="is-active"><a href>Draft: Disk Margins</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Draft: Disk Margins</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/cadojo/ControlTheoryNotes.jl/blob/master/docs/src/Analysis/Draft: Disk Margins.md" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="Disk-Margins"><a class="docs-heading-anchor" href="#Disk-Margins">Disk Margins</a><a id="Disk-Margins-1"></a><a class="docs-heading-anchor-permalink" href="#Disk-Margins" title="Permalink"></a></h1><p><em>How much gain <strong>and</strong> phase can your system tolerate?</em></p><div class="admonition is-warning"><header class="admonition-header">Warning</header><div class="admonition-body"><p>While all pages for this note-set will have chapter numbers, this page is just a draft! I&#39;d like to write chapters in-order,  but I&#39;m interested in exploring analysis methods, so I decided  to write this page before the several chapters that will come before it.</p></div></div><h2 id="Overview"><a class="docs-heading-anchor" href="#Overview">Overview</a><a id="Overview-1"></a><a class="docs-heading-anchor-permalink" href="#Overview" title="Permalink"></a></h2><p>Previous chapters have discussed <strong>gain margins</strong> and <strong>phase margins</strong>. Each provides a measure for  how much gain <strong>or</strong> phase your system can tolerate – that is, the gain margin for your system  tells you how much input <em>gain</em> your system can tolerate when your input <em>phase</em> is zero, and the  phase margin tells you how much input <em>phase</em> your system can tolerate when your input <em>gain</em> is zero. </p><p>In reality, would you expect a disturbance, sensor noise, or model uncertainty to introduce  gain <em>or</em> phase? The answer, of course, is no! Your controller will encounter  model uncertainties that introduce gain <em>and</em> phase simultaneously. The topic which relates to  designing control systems that perform well in spite of model uncertainty, sensor noise,  and disturbances is known as <strong>robust control</strong>. Engineers often use large gain  margin and phase margin requirements alongside high-fidelity simulations to assess their control system&#39;s  performance and robustness. The <strong>disk margin</strong> is one method for determining how robust your system is  to gain <em>and</em> phase simultaneously. The video below is a fantastic reference for disk margins, and  why they&#39;re useful. The paper below provides efficient algorithms for computing disk margins,  and associated values.</p><h2 id="Computing-the-Disk-Margin"><a class="docs-heading-anchor" href="#Computing-the-Disk-Margin">Computing the Disk Margin</a><a id="Computing-the-Disk-Margin-1"></a><a class="docs-heading-anchor-permalink" href="#Computing-the-Disk-Margin" title="Permalink"></a></h2><div class="admonition is-warning"><header class="admonition-header">Warning</header><div class="admonition-body"><p>To do!</p></div></div><h4 id="External-Resources"><a class="docs-heading-anchor" href="#External-Resources">External Resources</a><a id="External-Resources-1"></a><a class="docs-heading-anchor-permalink" href="#External-Resources" title="Permalink"></a></h4><h5 id="Overview-Paper"><a class="docs-heading-anchor" href="#Overview-Paper">Overview Paper</a><a id="Overview-Paper-1"></a><a class="docs-heading-anchor-permalink" href="#Overview-Paper" title="Permalink"></a></h5><p>A thorough <a href="https://arxiv.org/abs/2003.04771">paper</a>, written by  Peter Seiler, Andrew Packard, and Pascal Gahinet, covers disk margins in detail. </p><h5 id="Summary-Video"><a class="docs-heading-anchor" href="#Summary-Video">Summary Video</a><a id="Summary-Video-1"></a><a class="docs-heading-anchor-permalink" href="#Summary-Video" title="Permalink"></a></h5><p>Brian Douglass has authored a fantastic  <a href="https://www.youtube.com/embed/XazdN6eZF80">video</a> as an  accompanyment to the previously mentioned paper. </p><iframe width="560" height="315" src="https://www.youtube.com/embed/XazdN6eZF80" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><h2 id="Example"><a class="docs-heading-anchor" href="#Example">Example</a><a id="Example-1"></a><a class="docs-heading-anchor-permalink" href="#Example" title="Permalink"></a></h2><p>First, let&#39;s linearize our polynomial aircraft dynamics about a trim condition. The  trim condition used here is a <em>default</em> condition provided by <code>PolynomialGTM</code>.</p><pre><code class="language-">using Symbolics
+using LinearAlgebra
+using PolynomialGTM
+using ControlSystems
+using ModelingToolkit
+
+LinearizedGTM  = let
+
+    n = length(states(GTM))
+    p = length(controls(GTM))
+
+    A = let
+        symbolic = calculate_jacobian(GTM)
+        numeric  = map(element -&gt; substitute(element, GTM.defaults), symbolic)
+
+        numeric .|&gt; ModelingToolkit.value .|&gt; Float64
+    end
+
+    B = let
+        symbolic = Symbolics.jacobian(getfield.(equations(GTM), :RHS), parameters(GTM))
+        numeric  = map(element -&gt; substitute(element, GTM.defaults), symbolic)
+
+        numeric .|&gt; ModelingToolkit.value .|&gt; Float64
+    end
+
+    C = I(n)
+    D = zeros(n, p)
+
+    ss(A, B, C, D)
+end</code></pre><p>Note that the model we&#39;re using is a MIMO system – we&#39;ll have one transfer function  for every input-output channel. As a result, <span>$G(s)$</span> is a <span>$4\times2$</span>  transfer-function-matrix. Let&#39;s use a LQR-bsed control law. </p><pre><code class="language-">K = lqr(LinearizedGTM, I, I)</code></pre><pre><code class="language-">
+using Plots
+using StaticArrays
+using LinearAlgebra
+using PolynomialGTM
+using ControlSystems
+using ModelingToolkit
+using CoordinateTransformations
+
+LinearizedGTM  = let
+
+    n = length(states(GTM))
+    p = length(controls(GTM))
+
+    A = let
+        symbolic = calculate_jacobian(GTM)
+        numeric  = map(element -&gt; substitute(element, GTM.defaults), symbolic)
+
+        numeric .|&gt; ModelingToolkit.value .|&gt; Float64
+    end
+
+    B = let
+        symbolic = calculate_control_jacobian(GTM)
+        numeric  = map(element -&gt; substitute(element, GTM.defaults), symbolic)
+
+        numeric .|&gt; ModelingToolkit.value .|&gt; Float64
+    end
+
+    C = I(n)
+    D = zeros(n, p)
+
+    ss(A, B, C, D)
+end
+
+&quot;&quot;&quot;
+Returns the disk margin for the open-loop transfer function `L`
+as a tuple: `(e, α)`. The value `α` is the radius of the 
+largest possible diskregion, centered at some skew value `e`.
+&quot;&quot;&quot;
+function diskmargin(L::TransferFunction, e = 1.0; tolerance = 1e-3, max_iter = 20, num_variations = 72)
+
+    ins  = size(L, 2)
+    outs = size(L, 1)
+
+    polars     = Vector{Polar}(undef, num_variations)
+    variations = Vector{Complex{eltype(e)}}(undef, num_variations)
+    channels_stable = [false for x in 1:num_variations, y in 1:outs, z in 1:ins]
+
+    polars!(polars, α) = map!(
+        t -&gt; Polar(α, t), 
+        polars, 
+        range(0.0; stop=2π, length=num_variations)
+    )
+
+    circle!(variations, e, polars) = map!(
+        p -&gt; let 
+            val = CartesianFromPolar()(p)
+            e + val[1] + val[2]*im
+        end, 
+        variations, 
+        polars
+    )
+
+    stable!(channels_stable, variations) = let
+        for index in CartesianIndices(channels_stable)
+            γᵢ, i, j = Tuple(index)
+            γ = variations[γᵢ]
+            channels_stable[index] = isstable(γ*L[i,j] / (1 + γ*L[i,j]))
+        end
+    end
+
+    αᵢ    = 1.0
+    αᵢ₋₁  = 0.0
+    delta = Inf
+
+    for iter in 1:max_iter 
+
+        polars!(polars, αᵢ)
+        circle!(variations, e, polars)
+
+        all_channels_stable = true
+        for index in CartesianIndices(channels_stable)
+            γᵢ, i, j = Tuple(index)
+            γ = variations[γᵢ]
+            channels_stable[index] = isstable(γ*L[i,j] / (1 + γ*L[i,j]))
+            if channels_stable[index] == false
+                all_channels_stable = false
+                break
+            end
+        end
+
+        delta = abs(αᵢ-αᵢ₋₁)
+        αᵢ₋₁  = αᵢ
+
+        if all_channels_stable
+            αᵢ  += delta / 2
+        else
+            αᵢ  -= delta / 2
+        end
+
+        if delta ≤ tolerance
+            break
+        end
+
+    end
+
+    if delta &gt; tolerance
+        @error &quot;Desired tolerance of $tolerance not reached! Iterations converged to a tolerance of $delta.&quot;
+    end
+
+    return e, αᵢ
+end
+
+&quot;&quot;&quot;
+Returns the disk margin with variations applies as specified
+by `vary`: `:inputs`, `:outputs`, or ``:all`. `G` is the 
+plant&#39;s transfer function (or transfer function matrix), 
+and `K` is the feedback transfer function (or transfer function matrix).
+Function output is a tuple: `(e, α)`. The value `α` is the radius of the 
+largest possible diskregion, centered at some skew value `e`.
+&quot;&quot;&quot;
+function diskmargin(G::TransferFunction, K::TransferFunction, e = 1.0; kwargs...)
+
+    # vary inputs
+    α = diskmargin(K * G, e; kwargs...)[2]
+
+    # vary outputs
+    α = min(α, diskmargin(G * K, e; kwargs...)[2])
+
+    return (e, α)
+
+end
+
+using Plots
+plotly()
+
+function diskmarginplot(
+    L::TransferFunction;
+    gains  =  0.0:0.1:2.0,
+    phases = -2.0:0.1:2.0,
+    kwargs...)
+
+    Γ = map((x -&gt; x[1] + x[2]*im), Base.Iterators.product(gains, phases))
+    
+    num_inputs   = size(L, 2)
+    num_outputs  = size(L, 1)
+
+    stability_with_variation = [
+        let
+            channel_stability = [
+                isstable(γ*L[i,j] / (1 + γ*L[i,j])) 
+                for i ∈ 1:num_outputs for j ∈ 1:num_inputs
+            ]
+            all(channel_stability)
+        end
+        for γ ∈ Γ
+    ]
+
+    freqinfo = [
+        &quot;$(real(γ)) + $(imag(γ))im\n Gain: $(20*log10(real(γ))) dB\n  Phase: $(rad2deg(imag(γ))) deg&quot;
+        for γ ∈ Γ
+    ]
+
+    defaults = (; title        = &quot;Disk Margin Plot&quot;, 
+                  xlabel       = &quot;Real&quot;, 
+                  ylabel       = &quot;Imaginary&quot;,
+                  aspect_ratio = 1.0)
+
+    figure = plot(; merge(defaults, kwargs)...)
+
+    for (stable, variation) ∈ zip(stability_with_variation, Γ)
+        if stable
+            scatter!(figure, [real(variation)], [imag(variation)]; 
+                    label       = :none, 
+                    markersize  = 2, 
+                    markercolor = :green)
+        end
+    end
+
+    plot!(figure; hover=freqinfo)
+
+    return figure
+end
+
+G = tf(LinearizedGTM)
+K = tf(lqr(LinearizedGTM, I, I))
+L = series(G, K)
+
+diskmarginplot(L) # right now this calculates it (slightly incorrectly) by brute force!</code></pre><div class="admonition is-warning"><header class="admonition-header">Warning</header><div class="admonition-body"><p>TODO – this page is unfinished!</p></div></div></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../Dynamics/Chapter 6: Linearization/">« Chapter 6: Linearization</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.3 on <span class="colophon-date" title="Wednesday 14 July 2021 02:52">Wednesday 14 July 2021</span>. Using Julia version 1.6.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
