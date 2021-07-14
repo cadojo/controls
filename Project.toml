@@ -25,6 +25,7 @@ RDatasets = "ce6b1742-4840-55fa-b093-852dadbb1d8b"
 StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 
 [compat]
+Colors = "0.12"
 ControlSystems = "0.10"
 DifferentialEquations = "6"
 Documenter = "0.27"
