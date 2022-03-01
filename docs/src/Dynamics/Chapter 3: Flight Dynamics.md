@@ -164,12 +164,12 @@ We can use `DifferentialEquations` and `PolynomialGTM` to simulate this system! 
 has placed all states and inputs at a trim condition as default values, so empty state and parameter
 initial conditions can be provided to `ODEProblem`. 
 
-```@example Ch3
+```@example
 using Plots
 using PolynomialGTM
 using DifferentialEquations
 
-problem   = ODEProblem(GTM, [], (0.0, 100.0), [])
+problem   = ODEProblem(GTMFunction(), randn(4), (0.0, 100.0), randn(2))
 solutions = solve(problem; reltol = 1e-12, abstol = 1e-12)
 
 plot(solutions; linewidth = 2, dpi = 130, title = "GTM Simulation")

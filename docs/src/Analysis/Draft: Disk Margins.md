@@ -53,83 +53,11 @@ accompanyment to the previously mentioned paper.
 First, let's linearize our polynomial aircraft dynamics about a trim condition. The 
 trim condition used here is a _default_ condition provided by `PolynomialGTM`.
 
-```@example Disk Margins
-using Symbolics
-using LinearAlgebra
-using PolynomialGTM
-using ControlSystems
-using ModelingToolkit
-
-LinearizedGTM  = let
-
-    n = length(states(GTM))
-    p = length(controls(GTM))
-
-    A = let
-        symbolic = calculate_jacobian(GTM)
-        numeric  = map(element -> substitute(element, GTM.defaults), symbolic)
-
-        numeric .|> ModelingToolkit.value .|> Float64
-    end
-
-    B = let
-        symbolic = Symbolics.jacobian(getfield.(equations(GTM), :rhs), parameters(GTM))
-        numeric  = map(element -> substitute(element, GTM.defaults), symbolic)
-
-        numeric .|> ModelingToolkit.value .|> Float64
-    end
-
-    C = I(n)
-    D = zeros(n, p)
-
-    ss(A, B, C, D)
-end
-```
-
 Note that the model we're using is a MIMO system – we'll have one transfer function 
 for every input-output channel. As a result, $G(s)$ is a $4\times2$ 
 transfer-function-matrix. Let's use a LQR-bsed control law. 
 
-```@example Disk Margins
-K = lqr(LinearizedGTM, I, I)
-```
-
-
-```@example Disk Margins# Disk Margins!
-
-using Plots
-using StaticArrays
-using LinearAlgebra
-using PolynomialGTM
-using ControlSystems
-using ModelingToolkit
-using CoordinateTransformations
-
-LinearizedGTM  = let
-
-    n = length(states(GTM))
-    p = length(controls(GTM))
-
-    A = let
-        symbolic = calculate_jacobian(GTM)
-        numeric  = map(element -> substitute(element, GTM.defaults), symbolic)
-
-        numeric .|> ModelingToolkit.value .|> Float64
-    end
-
-    B = let
-        symbolic = calculate_control_jacobian(GTM)
-        numeric  = map(element -> substitute(element, GTM.defaults), symbolic)
-
-        numeric .|> ModelingToolkit.value .|> Float64
-    end
-
-    C = I(n)
-    D = zeros(n, p)
-
-    ss(A, B, C, D)
-end
-
+```julia
 """
 Returns the disk margin for the open-loop transfer function `L`
 as a tuple: `(e, α)`. The value `α` is the radius of the 
@@ -229,9 +157,6 @@ function diskmargin(G::TransferFunction, K::TransferFunction, e = 1.0; kwargs...
 
 end
 
-using Plots
-plotly()
-
 function diskmarginplot(
     L::TransferFunction;
     gains  =  0.0:0.1:2.0,
@@ -279,12 +204,6 @@ function diskmarginplot(
 
     return figure
 end
-
-G = tf(LinearizedGTM)
-K = tf(lqr(LinearizedGTM, I, I))
-L = series(G, K)
-
-diskmarginplot(L) # right now this calculates it (slightly incorrectly) by brute force!
 ```
 
 !!! warning
