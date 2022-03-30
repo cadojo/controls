@@ -21,7 +21,7 @@ Throughout these notes, one system will be used as an example: a polynomial
 model for a sub-scale radio-controlled aircraft, developed by NASA. 
 
 ## Ways to Read
-These notes are available as a [website](https://jcarpinelli.dev/ControlTheoryNotes.jl/stable), and (soon) via PDF. 
+These notes are available as a [website](https://notes.jcarpinelli.dev/controls/stable), and (soon) via PDF. 
 If you have any questions, suggestions, or corrections, always feel free to email the author, [Joe Carpinelli](mailto:jdcarpinelli@gmail.com).
 
 ## Topics to Cover
